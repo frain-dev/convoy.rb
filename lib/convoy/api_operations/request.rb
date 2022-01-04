@@ -4,9 +4,10 @@ require "json"
 module Convoy
   module ApiOperations
     module Request
-      def send_request(uri, method, params = {}, config = Convoy.config, **kwargs)
+      def send_request(uri, method, config = Convoy.config, **kwargs)
         # Determine URL.
         uri = URI(uri)
+        params = kwargs[:params].nil? ? {} : kwargs[:params]
         uri.query = URI.encode_www_form(params) unless params.empty?
 
         # Build Request.
@@ -47,6 +48,8 @@ module Convoy
 
         # Make request.
         client.request(request)
+
+        # TODO: Perform err checks.
       end
     end
   end

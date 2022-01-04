@@ -9,11 +9,12 @@ module Convoy
     def initialize(id = nil, config = Convoy.config, **kwargs)
       @id = id
       @data = kwargs[:data].nil? ? {} : kwargs[:data]
+      @params = kwargs[:params].nil? ? {} : kwargs[:params]
       @config = config
     end
 
     def resource_url
-      unless @id.nil?
+      if @id.nil?
         return "#{@config.base_uri}/#{@config.path_version}/groups"
       end
 

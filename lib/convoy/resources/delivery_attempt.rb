@@ -10,7 +10,7 @@ module Convoy
     end
 
     def resource_url
-      unless @id.nil?
+      if @id.nil?
         return "#{@config.base_uri}/#{@config.path_version}/events/#{@eventId}" + 
                "/deliveryattempts"
       end

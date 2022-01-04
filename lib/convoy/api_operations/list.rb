@@ -4,8 +4,8 @@ module Convoy
   module ApiOperations
     module List
       module ClassMethods
-        def list
-          resource = self.new
+        def list(**kwargs)
+          resource = self.new(**kwargs)
           resource.list
 
           resource

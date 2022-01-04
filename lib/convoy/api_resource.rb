@@ -14,7 +14,7 @@ module Convoy
   # methods rely on.
   class ApiResource
     extend Forwardable
-    include Convoy::ApiResource::Request
+    include Convoy::ApiOperations::Request
 
     # You must either use this or the list resource but cannot use object on 
     # the same instance. Each resource is either a container with one record 

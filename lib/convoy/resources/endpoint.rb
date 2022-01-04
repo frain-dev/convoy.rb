@@ -10,10 +10,11 @@ module Convoy
       @appId = appId
       @id = id
       @data = kwargs[:data].nil? ? {} : kwargs[:data]
+      @config = config
     end
 
     def resource_url
-      unless @id.nil?
+      if @id.nil?
         return "#{@config.base_uri}/#{@config.path_version}/applications/#{@appId}/endpoints"
       end
 

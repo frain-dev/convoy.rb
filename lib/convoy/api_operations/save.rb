@@ -2,8 +2,8 @@ module Convoy
   module ApiOperations
     module Save
       module ClassMethods
-        def update(id, data)
-          resource = self.new(id, data: data)
+        def update(id, **kwargs)
+          resource = self.new(id, **kwargs)
           resource.update
 
           resource
@@ -12,12 +12,12 @@ module Convoy
 
       def update(data = {})
         @data = data unless data.empty?
-        send_request(resource_url, :put, @data)
+        send_request(resource_url, :put, data: @data, params: @params)
       end
 
       def save
         method = @id.nil? ? :post : :put
-        send_request(resource_url, method, @data)
+        send_request(resource_url, method, data: @data, params: @params)
       end
 
       def self.included(base)
