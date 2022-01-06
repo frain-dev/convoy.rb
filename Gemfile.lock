@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    convoy (0.1.0)
+    convoy.rb (0.1.1)
       zeitwerk (~> 2.5)
 
 GEM
@@ -31,7 +31,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  convoy!
+  convoy.rb!
   minitest (~> 5.0)
   pry
   rake (~> 12.0)
