@@ -1,3 +1,6 @@
+# Gem build files
+*.gem
+
 /.bundle/
 /.yardoc
 /_yardoc/

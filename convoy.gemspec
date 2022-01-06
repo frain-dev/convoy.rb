@@ -1,7 +1,7 @@
 require_relative 'lib/convoy/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "convoy"
+  spec.name          = "convoy.rb"
   spec.version       = Convoy::VERSION
   spec.authors       = ["Subomi Oluwalana"]
   spec.email         = ["subomioluwalana71@gmail.com"]
@@ -11,8 +11,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://getconvoy.io"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
-
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/frain-dev/convoy.rb"
