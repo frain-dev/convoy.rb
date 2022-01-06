@@ -6,8 +6,8 @@ module Convoy
     include ApiOperations::List
     extend ApiOperations::Create
 
-    def initialize(appId = nil, id = nil, config = Convoy.config, **kwargs)
-      @appId = appId
+    def initialize(app_id = nil, id = nil, config = Convoy.config, **kwargs)
+      @app_id = app_id
       @id = id
       @data = kwargs[:data].nil? ? {} : kwargs[:data]
       @config = config
@@ -15,10 +15,10 @@ module Convoy
 
     def resource_url
       if @id.nil?
-        return "#{@config.base_uri}/#{@config.path_version}/applications/#{@appId}/endpoints"
+        return "#{@config.base_uri}/#{@config.path_version}/applications/#{@app_id}/endpoints"
       end
 
-      "#{@config.base_uri}/#{@config.path_version}/applications/#{@appId}/endpoints" +
+      "#{@config.base_uri}/#{@config.path_version}/applications/#{@app_id}/endpoints" +
       "/#{@id}"
     end
   end

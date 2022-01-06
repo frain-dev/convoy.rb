@@ -47,7 +47,8 @@ module Convoy
         client.set_debug_output $stderr
 
         # Make request.
-        client.request(request)
+        http_response = client.request(request)
+        @response = JSON.parse(http_response.body)
 
         # TODO: Perform err checks.
       end

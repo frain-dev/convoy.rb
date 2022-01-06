@@ -24,5 +24,7 @@ module Convoy
 
     # For list resources
     def_delegators :@data, :size, :map, :each
+
+    attr_reader :response
   end
 end
