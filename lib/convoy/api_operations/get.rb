@@ -11,10 +11,8 @@ module Convoy
       end
 
       def get
-        response = send_request(resource_url, :get)
-
-        data = JSON.parse(response.body)["data"]
-        @data = data
+        send_request(resource_url, :get)
+        @data = @response['data']
       end
 
       def self.included(base)

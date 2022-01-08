@@ -50,6 +50,7 @@ module Convoy
         http_response = client.request(request)
         @response = JSON.parse(http_response.body)
 
+        self
         # TODO: Perform err checks.
       end
     end
