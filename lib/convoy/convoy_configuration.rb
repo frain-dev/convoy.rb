@@ -2,6 +2,7 @@ module Convoy
   class ConvoyConfiguration
 
     attr_accessor :ssl
+    attr_accessor :debug
     attr_accessor :username
     attr_accessor :password
     attr_accessor :base_uri
@@ -13,6 +14,7 @@ module Convoy
       @base_uri = "https://cloud.getconvoy.io"
       @path_version = "/v1"
       @ssl = true
+      @debug = false
     end
 
   end

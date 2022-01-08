@@ -21,6 +21,7 @@ module Convoy
 
     # User configurable options
     def_delegators :@config, :ssl, :ssl=
+    def_delegators :@config, :debug, :debug=
     def_delegators :@config, :username, :username=
     def_delegators :@config, :password, :password=
     def_delegators :@config, :base_uri, :base_uri=

@@ -43,8 +43,7 @@ module Convoy
         client.continue_timeout = 10
         client.ssl_timeout = 10
 
-        # TODO: Make this configurable
-        client.set_debug_output $stderr
+        client.set_debug_output $stderr if config.debug
 
         # Make request.
         http_response = client.request(request)
