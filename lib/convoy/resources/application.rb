@@ -12,7 +12,6 @@ module Convoy
       @config = config
     end
 
-
     def resource_url
       if @id.nil?
         return "#{@config.base_uri}/#{@config.path_version}/applications"
