@@ -5,6 +5,7 @@ module Convoy
     attr_accessor :debug
     attr_accessor :username
     attr_accessor :password
+    attr_accessor :api_key
     attr_accessor :base_uri
     attr_accessor :path_version
     attr_accessor :logger

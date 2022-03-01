@@ -3,8 +3,9 @@ module Convoy
     include ApiOperations::Get
     include ApiOperations::List
 
-    def intialize(eventId = nil, id = nil, config = Convoy.config)
+    def intialize(eventId = nil, id = nil, config = Convoy.config, **kwargs)
       @eventId = eventId
+      @params = kwargs[:params].nil? ? {} : kwargs[:params]
       @id = id
       @config = config
     end

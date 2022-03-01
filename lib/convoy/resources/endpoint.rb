@@ -10,6 +10,7 @@ module Convoy
       @app_id = app_id
       @id = id
       @data = kwargs[:data].nil? ? {} : kwargs[:data]
+      @params = kwargs[:params].nil? ? {} : kwargs[:params]
       @config = config
     end
 
