@@ -32,8 +32,11 @@ module Convoy
                     req
                   end
 
-        request.basic_auth config.username, config.password
-
+        if !config.api_key.nil?
+          request['Authorization'] = "Bearer #{config.api_key}"
+        else
+          request.basic_auth config.username, config.password
+        end
 
         # Build HTTP Client.
         client = Net::HTTP.new(uri.host, uri.port)
