@@ -11,7 +11,7 @@ module Convoy
       end
 
       def delete
-        send_request(resource_url, :delete)
+        send_request(resource_url, :delete, params: @params)
       end
 
       def self.included(base)

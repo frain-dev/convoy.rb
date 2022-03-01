@@ -10,6 +10,7 @@ module Convoy
       @id = id
       @data = kwargs[:data].nil? ? {} : kwargs[:data]
       @params = kwargs[:params].nil? ? {} : kwargs[:params]
+      binding.pry
       @config = config
     end
 
