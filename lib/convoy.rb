@@ -20,6 +20,7 @@ module Convoy
     attr_reader :config
 
     # User configurable options
+    # Some of them have defaults
     def_delegators :@config, :ssl, :ssl=
     def_delegators :@config, :debug, :debug=
     def_delegators :@config, :username, :username=
