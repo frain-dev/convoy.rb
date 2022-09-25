@@ -14,10 +14,10 @@ module Convoy
 
     def resource_url
       if @id.nil?
-        return "#{@config.base_url}/#{@config.path_version}/subscriptions"
+        return "#{@config.base_uri}/#{@config.path_version}/subscriptions"
       end
       
-      "#{@config.base_url}/#{@config.path_version}/subscriptions" + "/#{@id}"
+      "#{@config.base_uri}/#{@config.path_version}/subscriptions" + "/#{@id}"
     end
   end
 end
