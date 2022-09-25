@@ -12,7 +12,7 @@ module Convoy
     attr_accessor :log_level
 
     def initialize
-      @base_uri = "https://cloud.getconvoy.io"
+      @base_uri = "https://dashboard.getconvoy.io"
       @path_version = "/v1"
       @ssl = true
       @debug = false
