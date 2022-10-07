@@ -1,15 +1,12 @@
 # Convoy
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/convoy`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is the official Convoy Ruby SDK. This SDK contains methods for easily interacting with Convoy's API. Below are examples to get you started. For additional examples, please see our official documentation at (https://convoy.readme.io/reference)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'convoy'
+gem 'convoy.rb'
 ```
 
 And then execute:
@@ -22,7 +19,86 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Setup Client
+
+```ruby
+require 'convoy'
+
+Convoy.ssl = true
+Convoy.api_key = "CO.M0aBe..."
+Convoy.path_version = "v1"
+Convoy.base_uri = "https://dashboard.getconvoy.io/api"
+
+```
+
+### Creating an application
+An application represents a user's application trying to receive webhooks. Once you create an application, you'll receive a `uid` as part of the response that you should save and supply in subsequent API calls to perform other requests such as creating an event.
+
+```ruby
+app = Convoy::Application.new(
+  params: {
+    groupID: "c3637195-53cd-4eba-b9df-e7ba9479fbb2"
+  },
+  data: {
+    name: "Integration One"
+  }
+)
+
+app_response = app.save
+```
+
+### Add an Endpoint to Application
+After creating an application, you'll need to add an endpoint to the application you just created. An endpoint represents a target URL to receive events.
+
+```ruby
+endpoint = Convoy::Endpoint.new(
+  app_id,
+  data: {
+    "description": "Endpoint One",
+    "http_timeout": "1m",
+    "url": "https://webhook.site/73932854-a20e-4d04-a151-d5952e873abd"
+  }
+)
+
+endpoint_response = endpoint.save
+```
+
+### Subscribe For Events
+After creating an endpoint, we need to susbcribe the endpoint to events. 
+
+```ruby
+subscription = Convoy::Subscription.new(
+  data: {
+    app_id: app_id,
+    endpoint_id: endpoint_id,
+    name: 'ruby subscription',
+    filter_config: {
+      event_types: [ "*" ]
+    }
+  }
+)
+
+subscription_response = subscription.save
+```
+
+### Publish an Event
+Now let's publish an event.
+
+```ruby
+event = Convoy::Event.new(
+  data: {
+    app_id: app_id,
+    event_type: "wallet.created",
+    data: {
+      status: "completed",
+      event_type: "wallet.created",
+      description: "transaction successful"
+    }
+  }
+)
+
+event_response = event.save
+```
 
 ## Development
 
@@ -35,10 +111,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/convoy. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/convoy/blob/master/CODE_OF_CONDUCT.md).
 
 
+## Credits
+
+- [Frain](https://github.com/frain-dev)
+
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Convoy project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/convoy/blob/master/CODE_OF_CONDUCT.md).
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
