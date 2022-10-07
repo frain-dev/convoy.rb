@@ -70,7 +70,7 @@ After creating an endpoint, we need to susbcribe the endpoint to events.
 subscription = Convoy::Subscription.new(
   data: {
     app_id: app_id,
-    endpoint_id: endpoint_id
+    endpoint_id: endpoint_id,
     name: 'ruby subscription',
     filter_config: {
       event_types: [ "*" ]
