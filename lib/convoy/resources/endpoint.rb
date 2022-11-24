@@ -10,7 +10,7 @@ module Convoy
       @id = id
       @config = config 
 
-      super(**kwargs)
+      super(kwargs)
     end
 
     def resource_uri
