@@ -13,12 +13,12 @@ module Convoy
       @config = config
     end
 
-    def resource_url
+    def resource_uri
       if @id.nil?
-        return "#{@config.base_uri}/#{@config.path_version}/events"
+        return "#{project_base_uri}/events"
       end
 
-      "#{@config.base_uri}/#{@config.path_version}/events/#{@id}"
+      "#{project_base_uri}/events/#{@id}"
     end
   end
 end

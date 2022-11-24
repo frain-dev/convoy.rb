@@ -10,14 +10,12 @@ module Convoy
       @config = config
     end
 
-    def resource_url
+    def resource_uri
       if @id.nil?
-        return "#{@config.base_uri}/#{@config.path_version}/events/#{@eventId}" +
-          "/eventdelivery"
+        return "#{project_base_uri}/events/#{@eventId}/eventdelivery"
       end
 
-      "#{@config.base_uri}/#{@config.path_version}/events/#{@eventId}/eventdelivery" +
-      "/#{@id}"
+      "#{project_base_uri}/events/#{@eventId}/eventdelivery/#{@id}"
     end
 
     # TODO: resend event delivery.

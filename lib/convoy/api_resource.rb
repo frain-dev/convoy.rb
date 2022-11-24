@@ -26,5 +26,19 @@ module Convoy
     def_delegators :@data, :size, :map, :each
 
     attr_reader :response
+
+    def initialize(**kwargs)
+      @params = kwargs[:params].nil? ? {} : kwargs[:params]
+      @query = kwargs[:query].nil? ? {} : kwargs[:query]
+      @data = kwargs[:data].nil? ? {} : kwargs[:data]
+    end
+
+    def project_base_uri
+      if @config.project_id.nil?
+        raise ArgumentError, "Project ID not supplied"
+      end
+
+      "#{@config.base_uri}/#{@config.path_version}/projects/#{@config.project_id}"
+    end
   end
 end
