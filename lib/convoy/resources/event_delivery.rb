@@ -4,10 +4,11 @@ module Convoy
     include ApiOperations::List
 
     def intialize(eventId = nil, id = nil, config = Convoy.config, **kwargs)
-      @eventId = eventId
-      @params = kwargs[:params].nil? ? {} : kwargs[:params]
       @id = id
+      @eventId = eventId
       @config = config
+
+      super(kwargs)
     end
 
     def resource_uri

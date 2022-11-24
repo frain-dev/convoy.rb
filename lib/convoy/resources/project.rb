@@ -8,9 +8,9 @@ module Convoy
 
     def initialize(id = nil, config = Convoy.config, **kwargs)
       @id = id
-      @data = kwargs[:data].nil? ? {} : kwargs[:data]
-      @params = kwargs[:params].nil? ? {} : kwargs[:params]
       @config = config
+
+      super(kwargs)
     end
 
     def resource_uri
