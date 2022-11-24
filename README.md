@@ -20,7 +20,7 @@ Or install it yourself as:
 ## Usage
 
 ### Setup Client
-
+To configure your client, provide your `api_key` and `project_id`, see below:
 ```ruby
 require 'convoy'
 
@@ -59,7 +59,7 @@ subscription_response = subscription.save
 ```
 
 ### Send Event
-Now let's publish an event.
+To send an event, you'll need to pass the `uid` from the endpoint we created earlier.
 
 ```ruby
 event = Convoy::Event.new(
