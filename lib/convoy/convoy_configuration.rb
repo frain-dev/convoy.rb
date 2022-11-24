@@ -11,7 +11,7 @@ module Convoy
     attr_accessor :project_id
 
     def initialize
-      @base_uri = "https://dashboard.getconvoy.io"
+      @base_uri = "https://dashboard.getconvoy.io/api"
       @path_version = "/v1"
       @ssl = true
       @debug = false
