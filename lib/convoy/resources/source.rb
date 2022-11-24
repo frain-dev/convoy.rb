@@ -7,17 +7,17 @@ module Convoy
 
     def initialize(id = nil, config = Convoy.config, **kwargs)
       @id = id
-      @data = kwargs[:data].nil? ? {} : kwargs[:data]
-      @params = kwargs[:params].nil? ? {} : kwargs[:params]
       @config = config
+
+      super(kwargs)
     end
 
-    def resource_url 
+    def resource_uri 
       if @id.nil?
-        return "#{@config.base_uri}/#{@config.path_version}/sources"
+        return "#{project_base_uri}/sources"
       end
 
-      "#{@config.base_uri}/#{@config.path_version}/sources" + "/#{@id}"
+      "#{project_base_uri}/sources/#{@id}"
     end
   end
 end

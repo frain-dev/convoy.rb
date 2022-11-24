@@ -11,7 +11,7 @@ module Convoy
       end
 
       def get
-        send_request(resource_url, :get, params: @params)
+        send_request(resource_uri, :get, params: @params)
         @data = @response['data']
       end
 

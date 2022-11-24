@@ -12,12 +12,12 @@ module Convoy
 
       def update(data = {})
         @data = data unless data.empty?
-        send_request(resource_url, :put, data: @data, params: @params)
+        send_request(resource_uri, :put, data: @data, params: @params)
       end
 
       def save
         method = @id.nil? ? :post : :put
-        send_request(resource_url, method, data: @data, params: @params)
+        send_request(resource_uri, method, data: @data, params: @params)
       end
 
       def self.included(base)

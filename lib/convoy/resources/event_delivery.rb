@@ -4,20 +4,19 @@ module Convoy
     include ApiOperations::List
 
     def intialize(eventId = nil, id = nil, config = Convoy.config, **kwargs)
-      @eventId = eventId
-      @params = kwargs[:params].nil? ? {} : kwargs[:params]
       @id = id
+      @eventId = eventId
       @config = config
+
+      super(kwargs)
     end
 
-    def resource_url
+    def resource_uri
       if @id.nil?
-        return "#{@config.base_uri}/#{@config.path_version}/events/#{@eventId}" +
-          "/eventdelivery"
+        return "#{project_base_uri}/events/#{@eventId}/eventdelivery"
       end
 
-      "#{@config.base_uri}/#{@config.path_version}/events/#{@eventId}/eventdelivery" +
-      "/#{@id}"
+      "#{project_base_uri}/events/#{@eventId}/eventdelivery/#{@id}"
     end
 
     # TODO: resend event delivery.
