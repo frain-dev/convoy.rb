@@ -52,9 +52,6 @@ subscription = Convoy::Subscription.new(
   data: {
     endpoint_id: endpoint_id,
     name: 'ruby subscription',
-    filter_config: {
-      event_types: [ "*" ]
-    }
   }
 )
 
