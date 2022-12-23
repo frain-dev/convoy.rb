@@ -47,12 +47,13 @@ module Convoy
       return Util.secure_compare(compute_signature(payload), sig_header)
     end
 
-    def verify_advanced_signature
+    def verify_advanced_signature(payload, sig_header)
       timestamp_header, signatures = get_timestamp_and_signatures(sig_header)
+      payload = "{#{timestamp_header}},{#{payload}}"
 
       verify_timestamp(timestamp_header)
 
-      unless signatures.any? { |s| Util.secure_compare(expected_sig, s) }
+      unless signatures.any? { |s| Util.secure_compare(compute_signature(payload), s) }
         raise SignatureVerificationError.new,
         "No signatures found matching the expected signature for payload"
       end
