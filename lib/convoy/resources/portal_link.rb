@@ -1,8 +1,9 @@
 module Convoy
-  class Subscription < ApiResource
+  class PortalLink < ApiResource
+    include ApiOperations::Get
     include ApiOperations::Save
-    include ApiOperations::Delete
     include ApiOperations::List
+    include ApiOperations::Delete
     extend ApiOperations::Create
 
     def initialize(id = nil, config = Convoy.config, **kwargs)
@@ -14,10 +15,10 @@ module Convoy
 
     def resource_uri
       if @id.nil?
-        return "#{project_base_uri}/subscriptions"
+        return "#{project_base_uri}/portal-links"
       end
-      
-      "#{project_base_uri}/subscriptions/#{@id}"
+
+      "#{project_base_uri}/portal-links/#{@id}"
     end
   end
 end

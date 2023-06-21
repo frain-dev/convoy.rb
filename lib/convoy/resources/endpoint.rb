@@ -10,7 +10,7 @@ module Convoy
       @id = id
       @config = config 
 
-      super(kwargs)
+      super(**kwargs)
     end
 
     def resource_uri
@@ -19,6 +19,11 @@ module Convoy
       end
 
       "#{project_base_uri}/endpoints/#{@id}"
+    end
+
+    def pause
+      pause_uri = "#{resource_uri}/pause"
+      send_request(pause_uri, :post, data: @data, params: @params)
     end
   end
 end

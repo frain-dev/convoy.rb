@@ -8,7 +8,7 @@ module Convoy
       @eventId = eventId
       @config = config
       
-      super(kwargs)
+      super(**kwargs)
     end
 
     def resource_uri

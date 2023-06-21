@@ -8,7 +8,7 @@ module Convoy
       @eventId = eventId
       @config = config
 
-      super(kwargs)
+      super(**kwargs)
     end
 
     def resource_uri
@@ -19,7 +19,15 @@ module Convoy
       "#{project_base_uri}/events/#{@eventId}/eventdelivery/#{@id}"
     end
 
-    # TODO: resend event delivery.
+    
+    def retry
+      retry_uri = "#{resource_uri}/resend"
+      send_request(retry_uri, :put, data: @data, params: @params)
+    end
 
+    def force_retry
+      force_retry_uri = "#{resource_uri}/forceresend"
+      send_request(force_retry_uri, :post, data: @data, params: @params)
+    end
   end
 end

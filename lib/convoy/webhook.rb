@@ -75,9 +75,9 @@ module Convoy
     # return encoded string
     def compute_signature(payload)
       case @encoding
-      when "hex":
+      when "hex"
         return OpenSSL::HMAC.hexdigest(@hash, @secret, payload)
-      when "base64":
+      when "base64"
         hmac = OpenSSL::HMAC.digest(@hash, @secret, payload)
         return Base64.encode64(hmac)
       end
