@@ -1,5 +1,5 @@
 # Convoy
-This is the official Convoy Ruby SDK. This SDK contains methods for easily interacting with Convoy's API. Below are examples to get you started. For additional examples, please see our official documentation at (https://convoy.readme.io/reference)
+This is the official Convoy Ruby SDK. This SDK contains methods for easily interacting with Convoy's API. Below are examples to get you started. For the full API reference, please take a look at our [docs](https://getconvoy.io/docs).
 
 ## Installation
 
