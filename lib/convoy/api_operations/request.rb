@@ -37,14 +37,7 @@ module Convoy
         end
 
         # Build HTTP Client.
-        client = Net::HTTP.new(uri.host, uri.port)
-        client.use_ssl = config.ssl
-        client.open_timeout = 10
-        client.read_timeout = 10
-        client.continue_timeout = 10
-        client.ssl_timeout = 10
-
-        client.set_debug_output $stderr if config.debug
+        client = build_http_client(uri, config)
 
         # Make request.
         http_response = client.request(request)
@@ -52,6 +45,22 @@ module Convoy
 
         self
         # TODO: Perform err checks.
+      end
+
+      private
+
+      def build_http_client(uri, config)
+        client = Net::HTTP.new(uri.host, uri.port)
+
+        client.use_ssl = config.ssl
+        client.open_timeout = config.http_open_timeout
+        client.read_timeout = config.http_read_timeout
+        client.continue_timeout = config.http_continue_timeout
+        client.ssl_timeout = config.http_ssl_timeout
+
+        client.set_debug_output $stderr if config.debug
+
+        client
       end
     end
   end
