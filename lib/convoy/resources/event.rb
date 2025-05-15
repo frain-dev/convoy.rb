@@ -25,5 +25,10 @@ module Convoy
       fanout_uri = "#{resource_uri}/fanout"
       send_request(fanout_uri, :post, data: @data, params: @params)
     end
+
+    def dynamic
+      dynamic_uri = "#{resource_uri}/dynamic"
+      send_request(dynamic_uri, :post, data: @data, params: @params)
+    end
   end
 end
