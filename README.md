@@ -20,14 +20,21 @@ Or install it yourself as:
 ## Usage
 
 ### Setup Client
-To configure your client, provide your `api_key` and `project_id`, see below:
+To configure your client, provide your `base_uri`, `api_key` and `project_id`, see below:
 ```ruby
 require 'convoy'
 
 Convoy.ssl = true
+Convoy.base_uri = "https://us.getconvoy.cloud/api"
 Convoy.api_key = "CO.M0aBe..."
 Convoy.project_id = "23b1..."
 ```
+
+Your instance URL depends on where your project lives:
+
+- Convoy Cloud (US): `https://us.getconvoy.cloud/api`
+- Convoy Cloud (EU): `https://eu.getconvoy.cloud/api`
+- Self-hosted: `https://your-instance/api`
 
 ### Create Endpoint
 An endpoint represents a target URL to receive webhook events. You should create one endpoint per user/business or whatever scope works well for you. 
@@ -35,9 +42,9 @@ An endpoint represents a target URL to receive webhook events. You should create
 ```ruby
 endpoint = Convoy::Endpoint.new(
   data: {
+    "name": "default-endpoint",
     "description": "Endpoint One",
-    "http_timeout": "1m",
-    "url": "https://webhook.site/73932854-a20e-4d04-a151-d5952e873abd"
+    "url": "https://example.com/webhooks/convoy"
   }
 )
 
@@ -75,6 +82,40 @@ event = Convoy::Event.new(
 )
 
 event_response = event.save
+```
+
+To fan an event out to all endpoints with the same `owner_id`, or broadcast to every endpoint in the project:
+
+```ruby
+fanout_response = Convoy::Event.new(
+  data: {
+    owner_id: "owner-1",
+    event_type: "wallet.created",
+    data: { status: "completed" }
+  }
+).fanout
+
+broadcast_response = Convoy::Event.new(
+  data: {
+    event_type: "wallet.created",
+    data: { status: "completed" }
+  }
+).broadcast
+```
+
+### Verify Webhook Signatures
+Verify with the raw request body, before parsing it. `verify` returns `true` or `false` for simple signatures, and raises `Convoy::SignatureVerificationError` for invalid advanced signatures.
+
+```ruby
+webhook = Convoy::Webhook.new("endpoint-secret")
+
+begin
+  valid = webhook.verify(request.raw_post, request.headers["X-Convoy-Signature"])
+rescue Convoy::SignatureVerificationError
+  valid = false
+end
+
+head :bad_request and return unless valid
 ```
 
 ## Development

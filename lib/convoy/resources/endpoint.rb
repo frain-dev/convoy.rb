@@ -23,7 +23,12 @@ module Convoy
 
     def pause
       pause_uri = "#{resource_uri}/pause"
-      send_request(pause_uri, :post, data: @data, params: @params)
+      send_request(pause_uri, :put, data: @data, params: @params)
+    end
+
+    def expire_secret
+      expire_secret_uri = "#{resource_uri}/expire_secret"
+      send_request(expire_secret_uri, :put, data: @data, params: @params)
     end
   end
 end
