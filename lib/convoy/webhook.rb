@@ -1,3 +1,6 @@
+require "openssl"
+require "base64"
+
 module Convoy
 
   class SignatureVerificationError < StandardError
@@ -87,8 +90,13 @@ module Convoy
 
     def get_timestamp_and_signatures(sig_header)
       list_items = sig_header.split(/,\s*/).map { |i| i.split("=", 2) }
-      timestamp = Integer(list_items.select { |i| i[0] == "t" }[0][1])
-      signatures = list_items[1..].map { |i| i[1] }
+      timestamp_item = list_items.find { |i| i[0] == "t" }
+      begin
+        timestamp = Integer(timestamp_item[1])
+      rescue StandardError
+        raise SignatureVerificationError, "Webhook has invalid header: missing or malformed timestamp"
+      end
+      signatures = list_items.reject { |i| i[0] == "t" }.map { |i| i[1] }
       [Time.at(timestamp), signatures]
     end
   end

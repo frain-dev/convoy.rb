@@ -36,6 +36,10 @@ module Convoy
           request['Authorization'] = "Bearer #{config.api_key}"
         end
 
+        # Pin the API version this SDK release was built against; the
+        # server's request migrations translate for older instances.
+        request['X-Convoy-Version'] = '2025-11-24'
+
         # Build HTTP Client.
         client = build_http_client(uri, config)
 

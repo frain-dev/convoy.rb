@@ -34,11 +34,17 @@ module Convoy
     end
 
     def project_base_uri
+      if @config.base_uri.nil?
+        raise ArgumentError, "Base URI not supplied, e.g. Convoy.base_uri = \"https://us.getconvoy.cloud/api\""
+      end
+
       if @config.project_id.nil?
         raise ArgumentError, "Project ID not supplied"
       end
 
-      "#{@config.base_uri}/#{@config.path_version}/projects/#{@config.project_id}"
+      # path_version already starts with a slash; joining with another slash
+      # produces "api//v1", which the server's router rejects with a 404.
+      "#{@config.base_uri.chomp("/")}#{@config.path_version}/projects/#{@config.project_id}"
     end
   end
 end

@@ -15,7 +15,10 @@ module Convoy
     attr_accessor :http_ssl_timeout
 
     def initialize
-      @base_uri = "https://dashboard.getconvoy.io/api"
+      # No default host: set Convoy.base_uri explicitly, e.g.
+      # https://us.getconvoy.cloud/api, https://eu.getconvoy.cloud/api,
+      # or your self-hosted instance.
+      @base_uri = nil
       @path_version = "/v1"
       @ssl = true
       @debug = false
