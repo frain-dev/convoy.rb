@@ -44,6 +44,12 @@ events.create_endpoint_event(project_id, ConvoyApi::ModelsCreateEvent.new(
 ))
 ```
 
+Note on reading event `data` from responses: OpenAPI Generator's Ruby runtime
+stringifies only the top-level keys of freeform object fields, so nested keys
+arrive as symbols (`event.data["nested"][:customer]`). Call
+`event.data.transform_values { ... }` or a deep-stringify helper if you need
+uniform string keys.
+
 Do not edit `lib/convoy_api/` by hand; regenerate with `./scripts/generate.sh`
 (CI on `frain-dev/convoy` dispatches this when the spec changes). The
 hand-written gem code below (`Convoy`, incl. webhook verify) is never touched

@@ -59,12 +59,19 @@ class ApiClientContractTest < Minitest::Test
     assert_equal "cus_123", sent.dig("data", "nested", "customer")
   end
 
+  # Inbound deserialization must keep every key of arbitrary event data.
+  # This replicates ApiClient#deserialize exactly (JSON.parse with
+  # symbolize_names: true, then build_from_hash): upstream OpenAPI Generator
+  # behavior re-stringifies only the top level of Hash<String, Object>
+  # fields, so NESTED keys arrive as symbols. Locked in here so a generator
+  # bump that changes the contract fails loudly. Documented in the README.
   def test_event_data_inbound_keeps_all_keys
     raw = '{"uid":"evt-1","event_type":"invoice.paid",' \
           '"data":{"amount":100,"nested":{"customer":"cus_123"}}}'
-    ev = ConvoyApi::DatastoreEvent.build_from_hash(JSON.parse(raw))
+    parsed = JSON.parse("[#{raw}]", symbolize_names: true)[0]
+    ev = ConvoyApi::DatastoreEvent.build_from_hash(parsed)
 
     assert_equal 100, ev.data["amount"]
-    assert_equal({ "customer" => "cus_123" }, ev.data["nested"])
+    assert_equal({ customer: "cus_123" }, ev.data["nested"])
   end
 end
