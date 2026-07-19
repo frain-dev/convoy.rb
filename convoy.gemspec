@@ -17,6 +17,8 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/frain-dev/convoy.rb/blob/main/CHANGELOG"
 
   spec.add_runtime_dependency 'zeitwerk', '~> 2.5'
+  # Required by the generated API client (lib/convoy_api).
+  spec.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

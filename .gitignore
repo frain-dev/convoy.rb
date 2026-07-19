@@ -9,3 +9,6 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+# OpenAPI Generator cache (scripts/generate.sh)
+/.cache/
