@@ -20,7 +20,7 @@ module ConvoyApi
       @api_client = api_client
     end
     # Bulk onboard endpoints with subscriptions
-    # This endpoint accepts a CSV file or JSON body to bulk-create endpoints with subscriptions
+    # This endpoint bulk-creates endpoints with subscriptions from a JSON body. A CSV file upload is also accepted over raw HTTP as multipart/form-data with a \"file\" field; generated SDK clients only expose the JSON body.
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :dry_run Validate without creating
@@ -32,7 +32,7 @@ module ConvoyApi
     end
 
     # Bulk onboard endpoints with subscriptions
-    # This endpoint accepts a CSV file or JSON body to bulk-create endpoints with subscriptions
+    # This endpoint bulk-creates endpoints with subscriptions from a JSON body. A CSV file upload is also accepted over raw HTTP as multipart/form-data with a \&quot;file\&quot; field; generated SDK clients only expose the JSON body.
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :dry_run Validate without creating
