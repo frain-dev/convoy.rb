@@ -5,6 +5,11 @@ require "forwardable"
 loader = Zeitwerk::Loader.for_gem
 loader.enable_reloading
 
+# The generated API client (require "convoy_api") uses plain requires, not
+# Zeitwerk conventions; keep it out of this gem's loader.
+loader.ignore("#{__dir__}/convoy_api")
+loader.ignore("#{__dir__}/convoy_api.rb")
+
 # Collapse resource directory
 resources_dir = "#{__dir__}/convoy/resources"
 loader.collapse(resources_dir)

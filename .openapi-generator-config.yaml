@@ -1,0 +1,8 @@
+# OpenAPI Generator (ruby) config for the generated API client.
+# The generated code lives under lib/convoy_api/ (module ConvoyApi); the
+# hand-written gem code in lib/convoy/ (module Convoy, incl. webhook verify)
+# is not generated and never touched by scripts/generate.sh.
+gemName: convoy_api
+moduleName: ConvoyApi
+gemHomepage: https://github.com/frain-dev/convoy.rb
+hideGenerationTimestamp: true
