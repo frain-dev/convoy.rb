@@ -114,6 +114,12 @@ module ConvoyApi
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'circuit_breaker',
+        :'meta_event',
+        :'ratelimit',
+        :'signature',
+        :'ssl',
+        :'strategy'
       ])
     end
 

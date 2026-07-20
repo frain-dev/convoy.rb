@@ -45,13 +45,14 @@ module ConvoyApi
       {
         :'message' => :'String',
         :'status' => :'Boolean',
-        :'data' => :'Object'
+        :'data' => :'Hash<String, Object>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'data'
       ])
     end
 
@@ -87,7 +88,9 @@ module ConvoyApi
       end
 
       if attributes.key?(:'data')
-        self.data = attributes[:'data']
+        if (value = attributes[:'data']).is_a?(Hash)
+          self.data = value
+        end
       end
     end
 

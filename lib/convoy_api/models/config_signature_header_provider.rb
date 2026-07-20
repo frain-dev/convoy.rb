@@ -16,9 +16,10 @@ require 'time'
 module ConvoyApi
   class ConfigSignatureHeaderProvider
     DefaultSignatureHeader = "X-Convoy-Signature".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [DefaultSignatureHeader].freeze
+      @all_vars ||= [DefaultSignatureHeader, EMPTY].freeze
     end
 
     # Builds the enum from string

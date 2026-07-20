@@ -15,7 +15,7 @@ require 'time'
 
 module ConvoyApi
   class DatastoreKafkaAuth < ApiModelBase
-    attr_accessor :hash
+    attr_accessor :hash_value
 
     attr_accessor :password
 
@@ -28,7 +28,7 @@ module ConvoyApi
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'hash' => :'hash',
+        :'hash_value' => :'hash',
         :'password' => :'password',
         :'tls' => :'tls',
         :'type' => :'type',
@@ -49,7 +49,7 @@ module ConvoyApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'hash' => :'String',
+        :'hash_value' => :'String',
         :'password' => :'String',
         :'tls' => :'Boolean',
         :'type' => :'String',
@@ -79,8 +79,8 @@ module ConvoyApi
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'hash')
-        self.hash = attributes[:'hash']
+      if attributes.key?(:'hash_value')
+        self.hash_value = attributes[:'hash_value']
       end
 
       if attributes.key?(:'password')
@@ -120,7 +120,7 @@ module ConvoyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          hash == o.hash &&
+          hash_value == o.hash_value &&
           password == o.password &&
           tls == o.tls &&
           type == o.type &&
@@ -136,7 +136,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [hash, password, tls, type, username].hash
+      [hash_value, password, tls, type, username].hash
     end
 
     # Builds the object from hash

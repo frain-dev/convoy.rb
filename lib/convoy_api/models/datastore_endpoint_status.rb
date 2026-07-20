@@ -18,9 +18,10 @@ module ConvoyApi
     ActiveEndpointStatus = "active".freeze
     InactiveEndpointStatus = "inactive".freeze
     PausedEndpointStatus = "paused".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [ActiveEndpointStatus, InactiveEndpointStatus, PausedEndpointStatus].freeze
+      @all_vars ||= [ActiveEndpointStatus, InactiveEndpointStatus, PausedEndpointStatus, EMPTY].freeze
     end
 
     # Builds the enum from string

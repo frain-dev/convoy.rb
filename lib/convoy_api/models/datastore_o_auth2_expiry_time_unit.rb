@@ -19,9 +19,10 @@ module ConvoyApi
     ExpiryTimeUnitMilliseconds = "milliseconds".freeze
     ExpiryTimeUnitMinutes = "minutes".freeze
     ExpiryTimeUnitHours = "hours".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [ExpiryTimeUnitSeconds, ExpiryTimeUnitMilliseconds, ExpiryTimeUnitMinutes, ExpiryTimeUnitHours].freeze
+      @all_vars ||= [ExpiryTimeUnitSeconds, ExpiryTimeUnitMilliseconds, ExpiryTimeUnitMinutes, ExpiryTimeUnitHours, EMPTY].freeze
     end
 
     # Builds the enum from string

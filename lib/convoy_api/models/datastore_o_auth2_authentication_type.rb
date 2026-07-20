@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastoreOAuth2AuthenticationType
     SharedSecretAuth = "shared_secret".freeze
     ClientAssertionAuth = "client_assertion".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [SharedSecretAuth, ClientAssertionAuth].freeze
+      @all_vars ||= [SharedSecretAuth, ClientAssertionAuth, EMPTY].freeze
     end
 
     # Builds the enum from string

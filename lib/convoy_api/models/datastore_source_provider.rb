@@ -18,9 +18,10 @@ module ConvoyApi
     GithubSourceProvider = "github".freeze
     TwitterSourceProvider = "twitter".freeze
     ShopifySourceProvider = "shopify".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [GithubSourceProvider, TwitterSourceProvider, ShopifySourceProvider].freeze
+      @all_vars ||= [GithubSourceProvider, TwitterSourceProvider, ShopifySourceProvider, EMPTY].freeze
     end
 
     # Builds the enum from string

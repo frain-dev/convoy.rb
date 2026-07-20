@@ -17,7 +17,7 @@ module ConvoyApi
   class ModelsHMac < ApiModelBase
     attr_accessor :encoding
 
-    attr_accessor :hash
+    attr_accessor :hash_value
 
     attr_accessor :header
 
@@ -49,7 +49,7 @@ module ConvoyApi
     def self.attribute_map
       {
         :'encoding' => :'encoding',
-        :'hash' => :'hash',
+        :'hash_value' => :'hash',
         :'header' => :'header',
         :'secret' => :'secret'
       }
@@ -69,7 +69,7 @@ module ConvoyApi
     def self.openapi_types
       {
         :'encoding' => :'DatastoreEncodingType',
-        :'hash' => :'String',
+        :'hash_value' => :'String',
         :'header' => :'String',
         :'secret' => :'String'
       }
@@ -103,10 +103,10 @@ module ConvoyApi
         self.encoding = nil
       end
 
-      if attributes.key?(:'hash')
-        self.hash = attributes[:'hash']
+      if attributes.key?(:'hash_value')
+        self.hash_value = attributes[:'hash_value']
       else
-        self.hash = nil
+        self.hash_value = nil
       end
 
       if attributes.key?(:'header')
@@ -131,8 +131,8 @@ module ConvoyApi
         invalid_properties.push('invalid value for "encoding", encoding cannot be nil.')
       end
 
-      if @hash.nil?
-        invalid_properties.push('invalid value for "hash", hash cannot be nil.')
+      if @hash_value.nil?
+        invalid_properties.push('invalid value for "hash_value", hash_value cannot be nil.')
       end
 
       if @header.nil?
@@ -151,7 +151,7 @@ module ConvoyApi
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @encoding.nil?
-      return false if @hash.nil?
+      return false if @hash_value.nil?
       return false if @header.nil?
       return false if @secret.nil?
       true
@@ -168,13 +168,13 @@ module ConvoyApi
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] hash Value to be assigned
-    def hash=(hash)
-      if hash.nil?
-        fail ArgumentError, 'hash cannot be nil'
+    # @param [Object] hash_value Value to be assigned
+    def hash_value=(hash_value)
+      if hash_value.nil?
+        fail ArgumentError, 'hash_value cannot be nil'
       end
 
-      @hash = hash
+      @hash_value = hash_value
     end
 
     # Custom attribute writer method with validation
@@ -203,7 +203,7 @@ module ConvoyApi
       return true if self.equal?(o)
       self.class == o.class &&
           encoding == o.encoding &&
-          hash == o.hash &&
+          hash_value == o.hash_value &&
           header == o.header &&
           secret == o.secret
     end
@@ -217,7 +217,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [encoding, hash, header, secret].hash
+      [encoding, hash_value, header, secret].hash
     end
 
     # Builds the object from hash

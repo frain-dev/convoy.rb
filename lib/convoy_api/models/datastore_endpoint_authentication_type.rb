@@ -18,9 +18,10 @@ module ConvoyApi
     APIKeyAuthentication = "api_key".freeze
     OAuth2Authentication = "oauth2".freeze
     BasicAuthentication = "basic_auth".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [APIKeyAuthentication, OAuth2Authentication, BasicAuthentication].freeze
+      @all_vars ||= [APIKeyAuthentication, OAuth2Authentication, BasicAuthentication, EMPTY].freeze
     end
 
     # Builds the enum from string

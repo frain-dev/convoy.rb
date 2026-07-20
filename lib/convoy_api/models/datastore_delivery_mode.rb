@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastoreDeliveryMode
     AtLeastOnceDeliveryMode = "at_least_once".freeze
     AtMostOnceDeliveryMode = "at_most_once".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [AtLeastOnceDeliveryMode, AtMostOnceDeliveryMode].freeze
+      @all_vars ||= [AtLeastOnceDeliveryMode, AtMostOnceDeliveryMode, EMPTY].freeze
     end
 
     # Builds the enum from string

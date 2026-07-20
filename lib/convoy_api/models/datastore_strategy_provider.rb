@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastoreStrategyProvider
     LinearStrategyProvider = "linear".freeze
     ExponentialStrategyProvider = "exponential".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [LinearStrategyProvider, ExponentialStrategyProvider].freeze
+      @all_vars ||= [LinearStrategyProvider, ExponentialStrategyProvider, EMPTY].freeze
     end
 
     # Builds the enum from string

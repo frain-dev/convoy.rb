@@ -122,6 +122,7 @@ module ConvoyApi
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'deleted_at',
       ])
     end
 

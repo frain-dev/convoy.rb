@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastoreEncodingType
     Base64Encoding = "base64".freeze
     HexEncoding = "hex".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [Base64Encoding, HexEncoding].freeze
+      @all_vars ||= [Base64Encoding, HexEncoding, EMPTY].freeze
     end
 
     # Builds the enum from string

@@ -17,7 +17,7 @@ module ConvoyApi
   class DatastoreHMac < ApiModelBase
     attr_accessor :encoding
 
-    attr_accessor :hash
+    attr_accessor :hash_value
 
     attr_accessor :header
 
@@ -49,7 +49,7 @@ module ConvoyApi
     def self.attribute_map
       {
         :'encoding' => :'encoding',
-        :'hash' => :'hash',
+        :'hash_value' => :'hash',
         :'header' => :'header',
         :'secret' => :'secret'
       }
@@ -69,7 +69,7 @@ module ConvoyApi
     def self.openapi_types
       {
         :'encoding' => :'DatastoreEncodingType',
-        :'hash' => :'String',
+        :'hash_value' => :'String',
         :'header' => :'String',
         :'secret' => :'String'
       }
@@ -101,8 +101,8 @@ module ConvoyApi
         self.encoding = attributes[:'encoding']
       end
 
-      if attributes.key?(:'hash')
-        self.hash = attributes[:'hash']
+      if attributes.key?(:'hash_value')
+        self.hash_value = attributes[:'hash_value']
       end
 
       if attributes.key?(:'header')
@@ -135,7 +135,7 @@ module ConvoyApi
       return true if self.equal?(o)
       self.class == o.class &&
           encoding == o.encoding &&
-          hash == o.hash &&
+          hash_value == o.hash_value &&
           header == o.header &&
           secret == o.secret
     end
@@ -149,7 +149,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [encoding, hash, header, secret].hash
+      [encoding, hash_value, header, secret].hash
     end
 
     # Builds the object from hash

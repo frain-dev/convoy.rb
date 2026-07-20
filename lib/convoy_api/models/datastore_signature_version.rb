@@ -19,7 +19,7 @@ module ConvoyApi
 
     attr_accessor :encoding
 
-    attr_accessor :hash
+    attr_accessor :hash_value
 
     attr_accessor :uid
 
@@ -50,7 +50,7 @@ module ConvoyApi
       {
         :'created_at' => :'created_at',
         :'encoding' => :'encoding',
-        :'hash' => :'hash',
+        :'hash_value' => :'hash',
         :'uid' => :'uid'
       }
     end
@@ -70,7 +70,7 @@ module ConvoyApi
       {
         :'created_at' => :'String',
         :'encoding' => :'DatastoreEncodingType',
-        :'hash' => :'String',
+        :'hash_value' => :'String',
         :'uid' => :'String'
       }
     end
@@ -105,8 +105,8 @@ module ConvoyApi
         self.encoding = attributes[:'encoding']
       end
 
-      if attributes.key?(:'hash')
-        self.hash = attributes[:'hash']
+      if attributes.key?(:'hash_value')
+        self.hash_value = attributes[:'hash_value']
       end
 
       if attributes.key?(:'uid')
@@ -136,7 +136,7 @@ module ConvoyApi
       self.class == o.class &&
           created_at == o.created_at &&
           encoding == o.encoding &&
-          hash == o.hash &&
+          hash_value == o.hash_value &&
           uid == o.uid
     end
 
@@ -149,7 +149,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, encoding, hash, uid].hash
+      [created_at, encoding, hash_value, uid].hash
     end
 
     # Builds the object from hash

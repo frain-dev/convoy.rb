@@ -62,6 +62,10 @@ module ConvoyApi
     def self.openapi_nullable
       Set.new([
         :'body',
+        :'header',
+        :'headers',
+        :'path',
+        :'query'
       ])
     end
 

@@ -24,7 +24,7 @@ module ConvoyApi
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :dry_run Validate without creating
-    # @option opts [File] :body Onboard Details (JSON)
+    # @option opts [ModelsBulkOnboardRequest] :models_bulk_onboard_request Onboard Details (JSON)
     # @return [BulkOnboard200Response]
     def bulk_onboard(project_id, opts = {})
       data, _status_code, _headers = bulk_onboard_with_http_info(project_id, opts)
@@ -36,7 +36,7 @@ module ConvoyApi
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :dry_run Validate without creating
-    # @option opts [File] :body Onboard Details (JSON)
+    # @option opts [ModelsBulkOnboardRequest] :models_bulk_onboard_request Onboard Details (JSON)
     # @return [Array<(BulkOnboard200Response, Integer, Hash)>] BulkOnboard200Response data, response status code and response headers
     def bulk_onboard_with_http_info(project_id, opts = {})
       if @api_client.config.debugging
@@ -58,7 +58,7 @@ module ConvoyApi
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
       # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/octet-stream'])
+      content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
@@ -67,7 +67,7 @@ module ConvoyApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'body'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'models_bulk_onboard_request'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'BulkOnboard200Response'

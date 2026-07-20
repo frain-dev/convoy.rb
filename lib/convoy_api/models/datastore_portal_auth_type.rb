@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastorePortalAuthType
     PortalAuthTypeRefreshToken = "refresh_token".freeze
     PortalAuthTypeStaticToken = "static_token".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [PortalAuthTypeRefreshToken, PortalAuthTypeStaticToken].freeze
+      @all_vars ||= [PortalAuthTypeRefreshToken, PortalAuthTypeStaticToken, EMPTY].freeze
     end
 
     # Builds the enum from string
