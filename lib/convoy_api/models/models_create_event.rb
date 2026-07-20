@@ -24,7 +24,7 @@ module ConvoyApi
     # Data is an arbitrary JSON value that gets sent as the body of the webhook to the endpoints
     attr_accessor :data
 
-    # Specifies the endpoint to send this event to.
+    # Specifies the endpoint to send this event to. Required unless the deprecated app_id is provided.
     attr_accessor :endpoint_id
 
     # Event Type is used for filtering and debugging e.g invoice.paid
