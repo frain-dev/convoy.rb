@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastoreSubscriptionType
     SubscriptionTypeCLI = "cli".freeze
     SubscriptionTypeAPI = "api".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [SubscriptionTypeCLI, SubscriptionTypeAPI].freeze
+      @all_vars ||= [SubscriptionTypeCLI, SubscriptionTypeAPI, EMPTY].freeze
     end
 
     # Builds the enum from string

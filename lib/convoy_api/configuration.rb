@@ -246,10 +246,10 @@ module ConvoyApi
       {
         'ApiKeyAuth' =>
           {
-            type: 'api_key',
+            type: 'bearer',
             in: 'header',
             key: 'Authorization',
-            value: api_key_with_prefix('Authorization')
+            value: "Bearer #{access_token_with_refresh}"
           },
       }
     end

@@ -21,9 +21,10 @@ module ConvoyApi
     FailureEventStatus = "Failure".freeze
     SuccessEventStatus = "Success".freeze
     RetryEventStatus = "Retry".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [ScheduledEventStatus, ProcessingEventStatus, DiscardedEventStatus, FailureEventStatus, SuccessEventStatus, RetryEventStatus].freeze
+      @all_vars ||= [ScheduledEventStatus, ProcessingEventStatus, DiscardedEventStatus, FailureEventStatus, SuccessEventStatus, RetryEventStatus, EMPTY].freeze
     end
 
     # Builds the enum from string

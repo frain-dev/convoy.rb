@@ -21,9 +21,10 @@ module ConvoyApi
     RoleProjectAdmin = "project_admin".freeze
     RoleProjectViewer = "project_viewer".freeze
     RoleAPI = "api".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [RoleInstanceAdmin, RoleOrganisationAdmin, RoleBillingAdmin, RoleProjectAdmin, RoleProjectViewer, RoleAPI].freeze
+      @all_vars ||= [RoleInstanceAdmin, RoleOrganisationAdmin, RoleBillingAdmin, RoleProjectAdmin, RoleProjectViewer, RoleAPI, EMPTY].freeze
     end
 
     # Builds the enum from string

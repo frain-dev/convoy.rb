@@ -88,6 +88,15 @@ module ConvoyApi
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'body',
+        :'enabled_at',
+        :'headers',
+        :'path',
+        :'query',
+        :'raw_body',
+        :'raw_headers',
+        :'raw_path',
+        :'raw_query',
       ])
     end
 

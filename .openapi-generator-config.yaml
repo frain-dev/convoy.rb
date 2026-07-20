@@ -6,3 +6,8 @@ gemName: convoy_api
 moduleName: ConvoyApi
 gemHomepage: https://github.com/frain-dev/convoy.rb
 hideGenerationTimestamp: true
+# The HMAC models have a property literally named "hash"; the generated
+# attribute shadows Ruby's Object#hash and the emitted hash-code method
+# recurses forever. Rename the Ruby attribute only; the JSON key stays "hash".
+nameMappings:
+  hash: hash_value

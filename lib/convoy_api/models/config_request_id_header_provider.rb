@@ -16,9 +16,10 @@ require 'time'
 module ConvoyApi
   class ConfigRequestIDHeaderProvider
     DefaultRequestIDHeader = "X-Convoy-Idempotency-Key".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [DefaultRequestIDHeader].freeze
+      @all_vars ||= [DefaultRequestIDHeader, EMPTY].freeze
     end
 
     # Builds the enum from string

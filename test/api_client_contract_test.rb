@@ -29,8 +29,8 @@ class ApiClientContractTest < Minitest::Test
     config = ConvoyApi::Configuration.new do |c|
       c.host = "us.getconvoy.cloud"
       c.base_path = "/api"
-      c.api_key["Authorization"] = "test-key"
-      c.api_key_prefix["Authorization"] = "Bearer"
+      # spec now models auth as http bearer; the client adds the Bearer prefix
+      c.access_token = "test-key"
     end
     client = ConvoyApi::ApiClient.new(config)
     # Pin the API version the client was generated from, so servers configured

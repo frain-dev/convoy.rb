@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastorePageDirection
     Next = "next".freeze
     Prev = "prev".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [Next, Prev].freeze
+      @all_vars ||= [Next, Prev, EMPTY].freeze
     end
 
     # Builds the enum from string

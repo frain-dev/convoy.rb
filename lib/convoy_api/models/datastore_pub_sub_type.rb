@@ -19,9 +19,10 @@ module ConvoyApi
     GooglePubSub = "google".freeze
     KafkaPubSub = "kafka".freeze
     AmqpPubSub = "amqp".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [SqsPubSub, GooglePubSub, KafkaPubSub, AmqpPubSub].freeze
+      @all_vars ||= [SqsPubSub, GooglePubSub, KafkaPubSub, AmqpPubSub, EMPTY].freeze
     end
 
     # Builds the enum from string

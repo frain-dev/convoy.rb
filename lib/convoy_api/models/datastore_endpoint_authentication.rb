@@ -78,6 +78,9 @@ module ConvoyApi
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'api_key',
+        :'basic_auth',
+        :'oauth2',
       ])
     end
 

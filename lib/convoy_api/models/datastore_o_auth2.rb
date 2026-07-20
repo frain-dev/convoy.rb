@@ -118,6 +118,8 @@ module ConvoyApi
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'field_mapping',
+        :'signing_key',
       ])
     end
 

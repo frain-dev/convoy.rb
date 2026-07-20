@@ -19,9 +19,10 @@ module ConvoyApi
     RestApiSource = "rest_api".freeze
     PubSubSource = "pub_sub".freeze
     DBChangeStream = "db_change_stream".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [HTTPSource, RestApiSource, PubSubSource, DBChangeStream].freeze
+      @all_vars ||= [HTTPSource, RestApiSource, PubSubSource, DBChangeStream, EMPTY].freeze
     end
 
     # Builds the enum from string

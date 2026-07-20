@@ -18,9 +18,10 @@ module ConvoyApi
     DeviceStatusOffline = "offline".freeze
     DeviceStatusOnline = "online".freeze
     DeviceStatusDisabled = "disabled".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [DeviceStatusOffline, DeviceStatusOnline, DeviceStatusDisabled].freeze
+      @all_vars ||= [DeviceStatusOffline, DeviceStatusOnline, DeviceStatusDisabled, EMPTY].freeze
     end
 
     # Builds the enum from string

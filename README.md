@@ -29,8 +29,7 @@ require 'convoy_api'
 config = ConvoyApi::Configuration.new do |c|
   c.host = 'us.getconvoy.cloud'
   c.base_path = '/api'
-  c.api_key['Authorization'] = api_key
-  c.api_key_prefix['Authorization'] = 'Bearer'
+  c.access_token = api_key # the client adds the Bearer prefix
 end
 client = ConvoyApi::ApiClient.new(config)
 # Pin the API version this client was generated from.

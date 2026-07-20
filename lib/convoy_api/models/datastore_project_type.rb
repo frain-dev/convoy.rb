@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastoreProjectType
     OutgoingProject = "outgoing".freeze
     IncomingProject = "incoming".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [OutgoingProject, IncomingProject].freeze
+      @all_vars ||= [OutgoingProject, IncomingProject, EMPTY].freeze
     end
 
     # Builds the enum from string

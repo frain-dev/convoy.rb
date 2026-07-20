@@ -17,9 +17,10 @@ module ConvoyApi
   class DatastoreMetaEventType
     HTTPMetaEvent = "http".freeze
     PubSubMetaEvent = "pub_sub".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [HTTPMetaEvent, PubSubMetaEvent].freeze
+      @all_vars ||= [HTTPMetaEvent, PubSubMetaEvent, EMPTY].freeze
     end
 
     # Builds the enum from string

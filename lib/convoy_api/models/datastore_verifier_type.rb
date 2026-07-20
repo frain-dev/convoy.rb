@@ -19,9 +19,10 @@ module ConvoyApi
     HMacVerifier = "hmac".freeze
     BasicAuthVerifier = "basic_auth".freeze
     APIKeyVerifier = "api_key".freeze
+    EMPTY = "".freeze
 
     def self.all_vars
-      @all_vars ||= [NoopVerifier, HMacVerifier, BasicAuthVerifier, APIKeyVerifier].freeze
+      @all_vars ||= [NoopVerifier, HMacVerifier, BasicAuthVerifier, APIKeyVerifier, EMPTY].freeze
     end
 
     # Builds the enum from string
