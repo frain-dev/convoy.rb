@@ -12,3 +12,6 @@
 
 # OpenAPI Generator cache (scripts/generate.sh)
 /.cache/
+
+# Gems installed by CI (ruby/setup-ruby bundler-cache); never commit.
+/vendor/bundle/
