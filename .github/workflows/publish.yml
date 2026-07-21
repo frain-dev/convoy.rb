@@ -1,0 +1,45 @@
+# Push convoy.rb to RubyGems when a GitHub release is published.
+#
+# Requires RubyGems trusted publishing for this workflow:
+#   https://guides.rubygems.org/trusted-publishing/adding-a-publisher
+#   Repository owner: frain-dev
+#   Repository name: convoy.rb
+#   Workflow filename: publish.yml
+#
+# Bootstrap alternative: set RUBYGEMS_API_KEY and temporarily switch the
+# configure step to api-token mode (see action docs).
+#
+name: Publish gem to RubyGems
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@003a5c4d8d6321bd302e38f6f0ec593f77f06600 # v1.319.0
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - name: Build gem
+        run: gem build convoy.gemspec
+
+      - name: Configure RubyGems credentials
+        # rubygems/configure-rubygems-credentials@v2.1.0 — OIDC trusted publishing
+        uses: rubygems/configure-rubygems-credentials@dc5a8d8553e6ee01fc26761a49e99e733d17954a
+
+      - name: Push gem
+        run: gem push convoy.rb-*.gem

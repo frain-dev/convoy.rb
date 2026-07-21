@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    convoy.rb (0.6.0)
+    convoy.rb (0.7.0)
       typhoeus (~> 1.0, >= 1.0.1)
       zeitwerk (~> 2.5)
 
