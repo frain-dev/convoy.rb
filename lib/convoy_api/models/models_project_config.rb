@@ -54,6 +54,9 @@ module ConvoyApi
     # Strategy is used to configure the project's retry strategies for failing events.
     attr_accessor :strategy
 
+    # SyncDynamicEventAck waits for dynamic endpoint/subscription resolve before acknowledging POST /events/dynamic. When false, the handler returns 201 after enqueue.
+    attr_accessor :sync_dynamic_event_ack
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -91,7 +94,8 @@ module ConvoyApi
         :'search_policy' => :'search_policy',
         :'signature' => :'signature',
         :'ssl' => :'ssl',
-        :'strategy' => :'strategy'
+        :'strategy' => :'strategy',
+        :'sync_dynamic_event_ack' => :'sync_dynamic_event_ack'
       }
     end
 
@@ -120,7 +124,8 @@ module ConvoyApi
         :'search_policy' => :'String',
         :'signature' => :'ModelsSignatureConfiguration',
         :'ssl' => :'ModelsSSLConfiguration',
-        :'strategy' => :'ModelsStrategyConfiguration'
+        :'strategy' => :'ModelsStrategyConfiguration',
+        :'sync_dynamic_event_ack' => :'Boolean'
       }
     end
 
@@ -197,6 +202,10 @@ module ConvoyApi
       if attributes.key?(:'strategy')
         self.strategy = attributes[:'strategy']
       end
+
+      if attributes.key?(:'sync_dynamic_event_ack')
+        self.sync_dynamic_event_ack = attributes[:'sync_dynamic_event_ack']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -231,7 +240,8 @@ module ConvoyApi
           search_policy == o.search_policy &&
           signature == o.signature &&
           ssl == o.ssl &&
-          strategy == o.strategy
+          strategy == o.strategy &&
+          sync_dynamic_event_ack == o.sync_dynamic_event_ack
     end
 
     # @see the `==` method
@@ -243,7 +253,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_event_id_trace_headers, circuit_breaker, disable_endpoint, max_payload_read_size, meta_event, multiple_endpoint_subscriptions, ratelimit, replay_attacks_prevention_enabled, request_id_header, search_policy, signature, ssl, strategy].hash
+      [add_event_id_trace_headers, circuit_breaker, disable_endpoint, max_payload_read_size, meta_event, multiple_endpoint_subscriptions, ratelimit, replay_attacks_prevention_enabled, request_id_header, search_policy, signature, ssl, strategy, sync_dynamic_event_ack].hash
     end
 
     # Builds the object from hash
