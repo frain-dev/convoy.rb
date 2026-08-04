@@ -33,13 +33,14 @@ module ConvoyApi
 
     attr_accessor :event_type
 
+    # FailureReason explains a Failure status to whoever is looking at the dashboard. It carries operator facing text only, never endpoint credentials, headers, or payload content.
+    attr_accessor :failure_reason
+
     attr_accessor :headers
 
     attr_accessor :idempotency_key
 
     attr_accessor :is_duplicate_event
-
-    attr_accessor :metadata
 
     attr_accessor :project_id
 
@@ -92,10 +93,10 @@ module ConvoyApi
         :'endpoint_metadata' => :'endpoint_metadata',
         :'endpoints' => :'endpoints',
         :'event_type' => :'event_type',
+        :'failure_reason' => :'failure_reason',
         :'headers' => :'headers',
         :'idempotency_key' => :'idempotency_key',
         :'is_duplicate_event' => :'is_duplicate_event',
-        :'metadata' => :'metadata',
         :'project_id' => :'project_id',
         :'raw' => :'raw',
         :'source_id' => :'source_id',
@@ -129,10 +130,10 @@ module ConvoyApi
         :'endpoint_metadata' => :'Array<DatastoreEndpoint>',
         :'endpoints' => :'Array<String>',
         :'event_type' => :'String',
+        :'failure_reason' => :'String',
         :'headers' => :'Hash<String, Array<String>>',
         :'idempotency_key' => :'String',
         :'is_duplicate_event' => :'Boolean',
-        :'metadata' => :'String',
         :'project_id' => :'String',
         :'raw' => :'String',
         :'source_id' => :'String',
@@ -210,6 +211,10 @@ module ConvoyApi
         self.event_type = attributes[:'event_type']
       end
 
+      if attributes.key?(:'failure_reason')
+        self.failure_reason = attributes[:'failure_reason']
+      end
+
       if attributes.key?(:'headers')
         if (value = attributes[:'headers']).is_a?(Hash)
           self.headers = value
@@ -222,10 +227,6 @@ module ConvoyApi
 
       if attributes.key?(:'is_duplicate_event')
         self.is_duplicate_event = attributes[:'is_duplicate_event']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
       end
 
       if attributes.key?(:'project_id')
@@ -293,10 +294,10 @@ module ConvoyApi
           endpoint_metadata == o.endpoint_metadata &&
           endpoints == o.endpoints &&
           event_type == o.event_type &&
+          failure_reason == o.failure_reason &&
           headers == o.headers &&
           idempotency_key == o.idempotency_key &&
           is_duplicate_event == o.is_duplicate_event &&
-          metadata == o.metadata &&
           project_id == o.project_id &&
           raw == o.raw &&
           source_id == o.source_id &&
@@ -317,7 +318,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [acknowledged_at, app_id, created_at, data, deleted_at, endpoint_metadata, endpoints, event_type, headers, idempotency_key, is_duplicate_event, metadata, project_id, raw, source_id, source_metadata, status, uid, updated_at, url_path, url_query_params].hash
+      [acknowledged_at, app_id, created_at, data, deleted_at, endpoint_metadata, endpoints, event_type, failure_reason, headers, idempotency_key, is_duplicate_event, project_id, raw, source_id, source_metadata, status, uid, updated_at, url_path, url_query_params].hash
     end
 
     # Builds the object from hash
