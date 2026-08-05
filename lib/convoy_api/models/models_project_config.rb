@@ -18,6 +18,9 @@ module ConvoyApi
     # Controls of the Event ID and Event Delivery ID Headers are added to the request when events are dispatched to endpoints
     attr_accessor :add_event_id_trace_headers
 
+    # AllowUnmatchedDynamicURLs lets a dynamic event URL that matches none of the project's endpoint URL templates auto-create an endpoint instead of failing. When false (the default), a project with templates configured rejects unmatched URLs.
+    attr_accessor :allow_unmatched_dynamic_urls
+
     # CircuitBreaker is used to configure the project's circuit breaker settings
     attr_accessor :circuit_breaker
 
@@ -54,8 +57,8 @@ module ConvoyApi
     # Strategy is used to configure the project's retry strategies for failing events.
     attr_accessor :strategy
 
-    # SyncDynamicEventAck waits for dynamic endpoint/subscription resolve before acknowledging POST /events/dynamic. When false, the handler returns 201 after enqueue.
-    attr_accessor :sync_dynamic_event_ack
+    # VerifyDynamicEvents waits for dynamic endpoint/subscription resolve before acknowledging POST /events/dynamic. When false, the handler returns 201 after enqueue.
+    attr_accessor :verify_dynamic_events
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -83,6 +86,7 @@ module ConvoyApi
     def self.attribute_map
       {
         :'add_event_id_trace_headers' => :'add_event_id_trace_headers',
+        :'allow_unmatched_dynamic_urls' => :'allow_unmatched_dynamic_urls',
         :'circuit_breaker' => :'circuit_breaker',
         :'disable_endpoint' => :'disable_endpoint',
         :'max_payload_read_size' => :'max_payload_read_size',
@@ -95,7 +99,7 @@ module ConvoyApi
         :'signature' => :'signature',
         :'ssl' => :'ssl',
         :'strategy' => :'strategy',
-        :'sync_dynamic_event_ack' => :'sync_dynamic_event_ack'
+        :'verify_dynamic_events' => :'verify_dynamic_events'
       }
     end
 
@@ -113,6 +117,7 @@ module ConvoyApi
     def self.openapi_types
       {
         :'add_event_id_trace_headers' => :'Boolean',
+        :'allow_unmatched_dynamic_urls' => :'Boolean',
         :'circuit_breaker' => :'DatastoreCircuitBreakerConfiguration',
         :'disable_endpoint' => :'Boolean',
         :'max_payload_read_size' => :'Integer',
@@ -125,7 +130,7 @@ module ConvoyApi
         :'signature' => :'ModelsSignatureConfiguration',
         :'ssl' => :'ModelsSSLConfiguration',
         :'strategy' => :'ModelsStrategyConfiguration',
-        :'sync_dynamic_event_ack' => :'Boolean'
+        :'verify_dynamic_events' => :'Boolean'
       }
     end
 
@@ -153,6 +158,10 @@ module ConvoyApi
 
       if attributes.key?(:'add_event_id_trace_headers')
         self.add_event_id_trace_headers = attributes[:'add_event_id_trace_headers']
+      end
+
+      if attributes.key?(:'allow_unmatched_dynamic_urls')
+        self.allow_unmatched_dynamic_urls = attributes[:'allow_unmatched_dynamic_urls']
       end
 
       if attributes.key?(:'circuit_breaker')
@@ -203,8 +212,8 @@ module ConvoyApi
         self.strategy = attributes[:'strategy']
       end
 
-      if attributes.key?(:'sync_dynamic_event_ack')
-        self.sync_dynamic_event_ack = attributes[:'sync_dynamic_event_ack']
+      if attributes.key?(:'verify_dynamic_events')
+        self.verify_dynamic_events = attributes[:'verify_dynamic_events']
       end
     end
 
@@ -229,6 +238,7 @@ module ConvoyApi
       return true if self.equal?(o)
       self.class == o.class &&
           add_event_id_trace_headers == o.add_event_id_trace_headers &&
+          allow_unmatched_dynamic_urls == o.allow_unmatched_dynamic_urls &&
           circuit_breaker == o.circuit_breaker &&
           disable_endpoint == o.disable_endpoint &&
           max_payload_read_size == o.max_payload_read_size &&
@@ -241,7 +251,7 @@ module ConvoyApi
           signature == o.signature &&
           ssl == o.ssl &&
           strategy == o.strategy &&
-          sync_dynamic_event_ack == o.sync_dynamic_event_ack
+          verify_dynamic_events == o.verify_dynamic_events
     end
 
     # @see the `==` method
@@ -253,7 +263,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_event_id_trace_headers, circuit_breaker, disable_endpoint, max_payload_read_size, meta_event, multiple_endpoint_subscriptions, ratelimit, replay_attacks_prevention_enabled, request_id_header, search_policy, signature, ssl, strategy, sync_dynamic_event_ack].hash
+      [add_event_id_trace_headers, allow_unmatched_dynamic_urls, circuit_breaker, disable_endpoint, max_payload_read_size, meta_event, multiple_endpoint_subscriptions, ratelimit, replay_attacks_prevention_enabled, request_id_header, search_policy, signature, ssl, strategy, verify_dynamic_events].hash
     end
 
     # Builds the object from hash
