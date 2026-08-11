@@ -15,7 +15,7 @@ require 'time'
 
 module ConvoyApi
   class ModelsCreateEndpoint < ApiModelBase
-    # Convoy supports two [signature formats](https://getconvoy.io/docs/product-manual/signatures) -- simple or advanced. If left unspecified, we default to false.
+    # Convoy supports two [signature formats](https://getconvoy.io/docs/product-manual/signatures) -- simple or advanced. Only applies to outgoing projects, where it defaults to true when omitted. Incoming projects always use advanced signatures.
     attr_accessor :advanced_signatures
 
     # Deprecated but necessary for backward compatibility

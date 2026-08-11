@@ -15,7 +15,7 @@ require 'time'
 
 module ConvoyApi
   class ModelsUpdateEndpoint < ApiModelBase
-    # Convoy supports two [signature formats](https://getconvoy.io/docs/product-manual/signatures) -- simple or advanced. If left unspecified, we default to false.
+    # Convoy supports two [signature formats](https://getconvoy.io/docs/product-manual/signatures) -- simple or advanced. Only applies to outgoing projects; omit it to keep the current value. Incoming projects always use advanced signatures.
     attr_accessor :advanced_signatures
 
     # This is used to define any custom authentication required by the endpoint. This shouldn't be needed often because webhook endpoints usually should be exposed to the internet.
