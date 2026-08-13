@@ -380,6 +380,78 @@ module ConvoyApi
       return data, status_code, headers
     end
 
+    # Endpoint period failure rates
+    # Display-only delivery rates for the given endpoint ids over a date range (default last 7 days). Independent of the list so a slow COUNT cannot delay the table.
+    # @param project_id [String] Project ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :endpoint_id Endpoint IDs
+    # @option opts [String] :start_date Start date
+    # @option opts [String] :end_date End date
+    # @return [GetEndpointPeriodFailureRates200Response]
+    def get_endpoint_period_failure_rates(project_id, opts = {})
+      data, _status_code, _headers = get_endpoint_period_failure_rates_with_http_info(project_id, opts)
+      data
+    end
+
+    # Endpoint period failure rates
+    # Display-only delivery rates for the given endpoint ids over a date range (default last 7 days). Independent of the list so a slow COUNT cannot delay the table.
+    # @param project_id [String] Project ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :endpoint_id Endpoint IDs
+    # @option opts [String] :start_date Start date
+    # @option opts [String] :end_date End date
+    # @return [Array<(GetEndpointPeriodFailureRates200Response, Integer, Hash)>] GetEndpointPeriodFailureRates200Response data, response status code and response headers
+    def get_endpoint_period_failure_rates_with_http_info(project_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.get_endpoint_period_failure_rates ...'
+      end
+      # verify the required parameter 'project_id' is set
+      if @api_client.config.client_side_validation && project_id.nil?
+        fail ArgumentError, "Missing the required parameter 'project_id' when calling EndpointsApi.get_endpoint_period_failure_rates"
+      end
+      # resource path
+      local_var_path = '/v1/projects/{projectID}/endpoints/period-failure-rates'.sub('{projectID}', CGI.escape(project_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
+      query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
+      query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetEndpointPeriodFailureRates200Response'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.get_endpoint_period_failure_rates",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#get_endpoint_period_failure_rates\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List all endpoints
     # This endpoint fetches an endpoints
     # @param project_id [String] Project ID
