@@ -67,6 +67,8 @@ module ConvoyApi
 
     attr_accessor :support_email
 
+    attr_accessor :teams_webhook_url
+
     attr_accessor :uid
 
     attr_accessor :updated_at
@@ -122,6 +124,7 @@ module ConvoyApi
         :'status' => :'status',
         :'success_count' => :'success_count',
         :'support_email' => :'support_email',
+        :'teams_webhook_url' => :'teams_webhook_url',
         :'uid' => :'uid',
         :'updated_at' => :'updated_at',
         :'url' => :'url'
@@ -165,6 +168,7 @@ module ConvoyApi
         :'status' => :'DatastoreEndpointStatus',
         :'success_count' => :'Integer',
         :'support_email' => :'String',
+        :'teams_webhook_url' => :'String',
         :'uid' => :'String',
         :'updated_at' => :'String',
         :'url' => :'String'
@@ -300,6 +304,10 @@ module ConvoyApi
         self.support_email = attributes[:'support_email']
       end
 
+      if attributes.key?(:'teams_webhook_url')
+        self.teams_webhook_url = attributes[:'teams_webhook_url']
+      end
+
       if attributes.key?(:'uid')
         self.uid = attributes[:'uid']
       end
@@ -357,6 +365,7 @@ module ConvoyApi
           status == o.status &&
           success_count == o.success_count &&
           support_email == o.support_email &&
+          teams_webhook_url == o.teams_webhook_url &&
           uid == o.uid &&
           updated_at == o.updated_at &&
           url == o.url
@@ -371,7 +380,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [advanced_signatures, authentication, cb_state, content_type, created_at, deleted_at, description, events, failure_count, failure_rate, http_timeout, mtls_client_cert, name, owner_id, period_failure_rate, project_id, rate_limit, rate_limit_duration, retry_count, secrets, slack_webhook_url, status, success_count, support_email, uid, updated_at, url].hash
+      [advanced_signatures, authentication, cb_state, content_type, created_at, deleted_at, description, events, failure_count, failure_rate, http_timeout, mtls_client_cert, name, owner_id, period_failure_rate, project_id, rate_limit, rate_limit_duration, retry_count, secrets, slack_webhook_url, status, success_count, support_email, teams_webhook_url, uid, updated_at, url].hash
     end
 
     # Builds the object from hash
