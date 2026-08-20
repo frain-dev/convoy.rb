@@ -36,6 +36,7 @@ module ConvoyApi
 
     attr_accessor :request_id_header
 
+    # SearchPolicy is an optional Go duration (e.g. \"24h\") shown in project settings. When set, the dashboard explains that payload/JSON search is additionally clamped to this lookback intersected with the Events log date picker. Empty means opt-out.
     attr_accessor :search_policy
 
     attr_accessor :signature

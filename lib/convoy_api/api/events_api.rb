@@ -23,6 +23,7 @@ module ConvoyApi
     # This endpoint replays multiple events at once.
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :body URL-encoded JSON object matched against the event payload. Combined with query as AND when both are set.
     # @option opts [String] :direction 
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
@@ -30,7 +31,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
-    # @option opts [String] :query Any arbitrary value to filter the events payload
+    # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -44,6 +45,7 @@ module ConvoyApi
     # This endpoint replays multiple events at once.
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :body URL-encoded JSON object matched against the event payload. Combined with query as AND when both are set.
     # @option opts [String] :direction 
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
@@ -51,7 +53,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
-    # @option opts [String] :query Any arbitrary value to filter the events payload
+    # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -73,6 +75,7 @@ module ConvoyApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'body'] = opts[:'body'] if !opts[:'body'].nil?
       query_params[:'direction'] = opts[:'direction'] if !opts[:'direction'].nil?
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
@@ -123,6 +126,7 @@ module ConvoyApi
     # This endpoint returns how many events would be affected by a batch replay with the given filters.
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :body URL-encoded JSON object matched against the event payload. Combined with query as AND when both are set.
     # @option opts [String] :direction 
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
@@ -130,7 +134,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
-    # @option opts [String] :query Any arbitrary value to filter the events payload
+    # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -144,6 +148,7 @@ module ConvoyApi
     # This endpoint returns how many events would be affected by a batch replay with the given filters.
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :body URL-encoded JSON object matched against the event payload. Combined with query as AND when both are set.
     # @option opts [String] :direction 
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
@@ -151,7 +156,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
-    # @option opts [String] :query Any arbitrary value to filter the events payload
+    # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -173,6 +178,7 @@ module ConvoyApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'body'] = opts[:'body'] if !opts[:'body'].nil?
       query_params[:'direction'] = opts[:'direction'] if !opts[:'direction'].nil?
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
@@ -588,6 +594,7 @@ module ConvoyApi
     # This endpoint fetches app events with pagination
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :body URL-encoded JSON object matched against the event payload. Combined with query as AND when both are set.
     # @option opts [String] :direction 
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
@@ -595,7 +602,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
-    # @option opts [String] :query Any arbitrary value to filter the events payload
+    # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -609,6 +616,7 @@ module ConvoyApi
     # This endpoint fetches app events with pagination
     # @param project_id [String] Project ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :body URL-encoded JSON object matched against the event payload. Combined with query as AND when both are set.
     # @option opts [String] :direction 
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
@@ -616,7 +624,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
-    # @option opts [String] :query Any arbitrary value to filter the events payload
+    # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -638,6 +646,7 @@ module ConvoyApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'body'] = opts[:'body'] if !opts[:'body'].nil?
       query_params[:'direction'] = opts[:'direction'] if !opts[:'direction'].nil?
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
