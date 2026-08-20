@@ -60,6 +60,9 @@ module ConvoyApi
     # Endpoint developers support email. This is used for communicating endpoint state changes. You should always turn this on when disabling endpoints are enabled.
     attr_accessor :support_email
 
+    # Microsoft Teams webhook URL is an alternative method to support email where endpoint developers can receive failure notifications in a Teams channel. Use a Workflows (Power Automate) webhook URL; retired Office 365 connector URLs no longer deliver.
+    attr_accessor :teams_webhook_url
+
     # URL is the endpoint's URL prefixed with https. non-https urls are currently not supported.
     attr_accessor :url
 
@@ -81,6 +84,7 @@ module ConvoyApi
         :'secret' => :'secret',
         :'slack_webhook_url' => :'slack_webhook_url',
         :'support_email' => :'support_email',
+        :'teams_webhook_url' => :'teams_webhook_url',
         :'url' => :'url'
       }
     end
@@ -113,6 +117,7 @@ module ConvoyApi
         :'secret' => :'String',
         :'slack_webhook_url' => :'String',
         :'support_email' => :'String',
+        :'teams_webhook_url' => :'String',
         :'url' => :'String'
       }
     end
@@ -199,6 +204,10 @@ module ConvoyApi
         self.support_email = attributes[:'support_email']
       end
 
+      if attributes.key?(:'teams_webhook_url')
+        self.teams_webhook_url = attributes[:'teams_webhook_url']
+      end
+
       if attributes.key?(:'url')
         self.url = attributes[:'url']
       end
@@ -239,6 +248,7 @@ module ConvoyApi
           secret == o.secret &&
           slack_webhook_url == o.slack_webhook_url &&
           support_email == o.support_email &&
+          teams_webhook_url == o.teams_webhook_url &&
           url == o.url
     end
 
@@ -251,7 +261,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [advanced_signatures, app_id, authentication, content_type, description, http_timeout, is_disabled, mtls_client_cert, name, owner_id, rate_limit, rate_limit_duration, secret, slack_webhook_url, support_email, url].hash
+      [advanced_signatures, app_id, authentication, content_type, description, http_timeout, is_disabled, mtls_client_cert, name, owner_id, rate_limit, rate_limit_duration, secret, slack_webhook_url, support_email, teams_webhook_url, url].hash
     end
 
     # Builds the object from hash
