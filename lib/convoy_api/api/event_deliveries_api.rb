@@ -32,6 +32,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
+    # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
@@ -55,6 +56,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
+    # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
@@ -86,6 +88,7 @@ module ConvoyApi
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
+      query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'status'] = @api_client.build_collection_param(opts[:'status'], :multi) if !opts[:'status'].nil?
@@ -212,6 +215,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
+    # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
@@ -235,6 +239,7 @@ module ConvoyApi
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
+    # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
@@ -266,6 +271,7 @@ module ConvoyApi
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
+      query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'status'] = @api_client.build_collection_param(opts[:'status'], :multi) if !opts[:'status'].nil?
