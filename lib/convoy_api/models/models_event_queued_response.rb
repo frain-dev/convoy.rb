@@ -14,19 +14,20 @@ require 'date'
 require 'time'
 
 module ConvoyApi
-  class CreateBroadcastEvent201Response < ApiModelBase
-    attr_accessor :message
+  class ModelsEventQueuedResponse < ApiModelBase
+    attr_accessor :event_type
 
-    attr_accessor :status
+    attr_accessor :idempotency_key
 
-    attr_accessor :data
+    # UID is the event id.
+    attr_accessor :uid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'message' => :'message',
-        :'status' => :'status',
-        :'data' => :'data'
+        :'event_type' => :'event_type',
+        :'idempotency_key' => :'idempotency_key',
+        :'uid' => :'uid'
       }
     end
 
@@ -43,9 +44,9 @@ module ConvoyApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'message' => :'String',
-        :'status' => :'Boolean',
-        :'data' => :'ModelsEventResponse'
+        :'event_type' => :'String',
+        :'idempotency_key' => :'String',
+        :'uid' => :'String'
       }
     end
 
@@ -55,39 +56,32 @@ module ConvoyApi
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'UtilServerResponse'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `ConvoyApi::CreateBroadcastEvent201Response` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `ConvoyApi::ModelsEventQueuedResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `ConvoyApi::CreateBroadcastEvent201Response`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `ConvoyApi::ModelsEventQueuedResponse`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'message')
-        self.message = attributes[:'message']
+      if attributes.key?(:'event_type')
+        self.event_type = attributes[:'event_type']
       end
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'idempotency_key')
+        self.idempotency_key = attributes[:'idempotency_key']
       end
 
-      if attributes.key?(:'data')
-        self.data = attributes[:'data']
+      if attributes.key?(:'uid')
+        self.uid = attributes[:'uid']
       end
     end
 
@@ -111,9 +105,9 @@ module ConvoyApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          message == o.message &&
-          status == o.status &&
-          data == o.data
+          event_type == o.event_type &&
+          idempotency_key == o.idempotency_key &&
+          uid == o.uid
     end
 
     # @see the `==` method
@@ -125,7 +119,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [message, status, data].hash
+      [event_type, idempotency_key, uid].hash
     end
 
     # Builds the object from hash
