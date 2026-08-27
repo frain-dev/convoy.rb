@@ -226,22 +226,22 @@ module ConvoyApi
     end
 
     # Create a broadcast event
-    # This endpoint creates a event that is broadcast to every endpoint whose subscription matches the given event type.
+    # This endpoint creates a event that is broadcast to every endpoint whose subscription matches the given event type. The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId= to follow the send.
     # @param project_id [String] Project ID
     # @param models_broadcast_event [ModelsBroadcastEvent] Broadcast Event Details
     # @param [Hash] opts the optional parameters
-    # @return [CreateBroadcastEvent201Response]
+    # @return [CreateEndpointEvent201Response]
     def create_broadcast_event(project_id, models_broadcast_event, opts = {})
       data, _status_code, _headers = create_broadcast_event_with_http_info(project_id, models_broadcast_event, opts)
       data
     end
 
     # Create a broadcast event
-    # This endpoint creates a event that is broadcast to every endpoint whose subscription matches the given event type.
+    # This endpoint creates a event that is broadcast to every endpoint whose subscription matches the given event type. The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId&#x3D; to follow the send.
     # @param project_id [String] Project ID
     # @param models_broadcast_event [ModelsBroadcastEvent] Broadcast Event Details
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CreateBroadcastEvent201Response, Integer, Hash)>] CreateBroadcastEvent201Response data, response status code and response headers
+    # @return [Array<(CreateEndpointEvent201Response, Integer, Hash)>] CreateEndpointEvent201Response data, response status code and response headers
     def create_broadcast_event_with_http_info(project_id, models_broadcast_event, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.create_broadcast_event ...'
@@ -277,7 +277,7 @@ module ConvoyApi
       post_body = opts[:debug_body] || @api_client.object_to_http_body(models_broadcast_event)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'CreateBroadcastEvent201Response'
+      return_type = opts[:debug_return_type] || 'CreateEndpointEvent201Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
@@ -300,22 +300,22 @@ module ConvoyApi
     end
 
     # Dynamic Events
-    # This endpoint does not require creating endpoint and subscriptions ahead of time. Instead, you supply the endpoint and the payload, and Convoy delivers the events
+    # This endpoint creates a dynamic event without creating the endpoint and subscription ahead of time. The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId= to follow the send.
     # @param project_id [String] Project ID
     # @param models_dynamic_event [ModelsDynamicEvent] Event Details
     # @param [Hash] opts the optional parameters
-    # @return [GetProjects400Response]
+    # @return [CreateEndpointEvent201Response]
     def create_dynamic_event(project_id, models_dynamic_event, opts = {})
       data, _status_code, _headers = create_dynamic_event_with_http_info(project_id, models_dynamic_event, opts)
       data
     end
 
     # Dynamic Events
-    # This endpoint does not require creating endpoint and subscriptions ahead of time. Instead, you supply the endpoint and the payload, and Convoy delivers the events
+    # This endpoint creates a dynamic event without creating the endpoint and subscription ahead of time. The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId&#x3D; to follow the send.
     # @param project_id [String] Project ID
     # @param models_dynamic_event [ModelsDynamicEvent] Event Details
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GetProjects400Response, Integer, Hash)>] GetProjects400Response data, response status code and response headers
+    # @return [Array<(CreateEndpointEvent201Response, Integer, Hash)>] CreateEndpointEvent201Response data, response status code and response headers
     def create_dynamic_event_with_http_info(project_id, models_dynamic_event, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.create_dynamic_event ...'
@@ -351,7 +351,7 @@ module ConvoyApi
       post_body = opts[:debug_body] || @api_client.object_to_http_body(models_dynamic_event)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'GetProjects400Response'
+      return_type = opts[:debug_return_type] || 'CreateEndpointEvent201Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
@@ -374,22 +374,22 @@ module ConvoyApi
     end
 
     # Create an event
-    # This endpoint creates an endpoint event
+    # This endpoint creates an endpoint event The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId= to follow the send.
     # @param project_id [String] Project ID
     # @param models_create_event [ModelsCreateEvent] Event Details
     # @param [Hash] opts the optional parameters
-    # @return [GetProjects400Response]
+    # @return [CreateEndpointEvent201Response]
     def create_endpoint_event(project_id, models_create_event, opts = {})
       data, _status_code, _headers = create_endpoint_event_with_http_info(project_id, models_create_event, opts)
       data
     end
 
     # Create an event
-    # This endpoint creates an endpoint event
+    # This endpoint creates an endpoint event The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId&#x3D; to follow the send.
     # @param project_id [String] Project ID
     # @param models_create_event [ModelsCreateEvent] Event Details
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GetProjects400Response, Integer, Hash)>] GetProjects400Response data, response status code and response headers
+    # @return [Array<(CreateEndpointEvent201Response, Integer, Hash)>] CreateEndpointEvent201Response data, response status code and response headers
     def create_endpoint_event_with_http_info(project_id, models_create_event, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.create_endpoint_event ...'
@@ -425,7 +425,7 @@ module ConvoyApi
       post_body = opts[:debug_body] || @api_client.object_to_http_body(models_create_event)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'GetProjects400Response'
+      return_type = opts[:debug_return_type] || 'CreateEndpointEvent201Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
@@ -448,22 +448,22 @@ module ConvoyApi
     end
 
     # Fan out an event
-    # This endpoint uses the owner_id to fan out an event to multiple endpoints.
+    # This endpoint uses the owner_id to fan out an event to multiple endpoints. The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId= to follow the send.
     # @param project_id [String] Project ID
     # @param models_fanout_event [ModelsFanoutEvent] Event Details
     # @param [Hash] opts the optional parameters
-    # @return [GetProjects400Response]
+    # @return [CreateEndpointEvent201Response]
     def create_endpoint_fanout_event(project_id, models_fanout_event, opts = {})
       data, _status_code, _headers = create_endpoint_fanout_event_with_http_info(project_id, models_fanout_event, opts)
       data
     end
 
     # Fan out an event
-    # This endpoint uses the owner_id to fan out an event to multiple endpoints.
+    # This endpoint uses the owner_id to fan out an event to multiple endpoints. The 201 body includes uid (the event id). Use GET /events/{eventID} or GET /eventdeliveries?eventId&#x3D; to follow the send.
     # @param project_id [String] Project ID
     # @param models_fanout_event [ModelsFanoutEvent] Event Details
     # @param [Hash] opts the optional parameters
-    # @return [Array<(GetProjects400Response, Integer, Hash)>] GetProjects400Response data, response status code and response headers
+    # @return [Array<(CreateEndpointEvent201Response, Integer, Hash)>] CreateEndpointEvent201Response data, response status code and response headers
     def create_endpoint_fanout_event_with_http_info(project_id, models_fanout_event, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.create_endpoint_fanout_event ...'
@@ -499,7 +499,7 @@ module ConvoyApi
       post_body = opts[:debug_body] || @api_client.object_to_http_body(models_fanout_event)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'GetProjects400Response'
+      return_type = opts[:debug_return_type] || 'CreateEndpointEvent201Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
@@ -526,7 +526,7 @@ module ConvoyApi
     # @param project_id [String] Project ID
     # @param event_id [String] event id
     # @param [Hash] opts the optional parameters
-    # @return [CreateBroadcastEvent201Response]
+    # @return [GetEndpointEvent200Response]
     def get_endpoint_event(project_id, event_id, opts = {})
       data, _status_code, _headers = get_endpoint_event_with_http_info(project_id, event_id, opts)
       data
@@ -537,7 +537,7 @@ module ConvoyApi
     # @param project_id [String] Project ID
     # @param event_id [String] event id
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CreateBroadcastEvent201Response, Integer, Hash)>] CreateBroadcastEvent201Response data, response status code and response headers
+    # @return [Array<(GetEndpointEvent200Response, Integer, Hash)>] GetEndpointEvent200Response data, response status code and response headers
     def get_endpoint_event_with_http_info(project_id, event_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.get_endpoint_event ...'
@@ -568,7 +568,7 @@ module ConvoyApi
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'CreateBroadcastEvent201Response'
+      return_type = opts[:debug_return_type] || 'GetEndpointEvent200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
@@ -698,7 +698,7 @@ module ConvoyApi
     # @param project_id [String] Project ID
     # @param event_id [String] event id
     # @param [Hash] opts the optional parameters
-    # @return [CreateBroadcastEvent201Response]
+    # @return [GetEndpointEvent200Response]
     def replay_endpoint_event(project_id, event_id, opts = {})
       data, _status_code, _headers = replay_endpoint_event_with_http_info(project_id, event_id, opts)
       data
@@ -709,7 +709,7 @@ module ConvoyApi
     # @param project_id [String] Project ID
     # @param event_id [String] event id
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CreateBroadcastEvent201Response, Integer, Hash)>] CreateBroadcastEvent201Response data, response status code and response headers
+    # @return [Array<(GetEndpointEvent200Response, Integer, Hash)>] GetEndpointEvent200Response data, response status code and response headers
     def replay_endpoint_event_with_http_info(project_id, event_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.replay_endpoint_event ...'
@@ -740,7 +740,7 @@ module ConvoyApi
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'CreateBroadcastEvent201Response'
+      return_type = opts[:debug_return_type] || 'GetEndpointEvent200Response'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ApiKeyAuth']
