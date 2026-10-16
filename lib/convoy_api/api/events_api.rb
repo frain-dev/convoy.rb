@@ -28,6 +28,7 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
@@ -50,6 +51,7 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
@@ -80,6 +82,7 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
@@ -131,6 +134,7 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
@@ -153,6 +157,7 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
@@ -183,6 +188,7 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
@@ -599,6 +605,7 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
@@ -621,6 +628,7 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
@@ -651,6 +659,7 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
