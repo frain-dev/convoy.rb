@@ -95,10 +95,12 @@ module ConvoyApi
     end
 
     # List delivery attempts
-    # This endpoint fetches an app message's delivery attempts
+    # This endpoint fetches an app message's delivery attempts Default: latest ten attempts as an array. With paginated=true: content and next_cursor. Pass next_cursor as before for older history; empty means last page. Pages are oldest first.
     # @param project_id [String] Project ID
     # @param event_delivery_id [String] event delivery id
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :paginated Return a page of ten attempts and next_cursor
+    # @option opts [String] :before Exclusive attempt cursor from next_cursor; requires paginated&#x3D;true
     # @return [GetDeliveryAttempts200Response]
     def get_delivery_attempts(project_id, event_delivery_id, opts = {})
       data, _status_code, _headers = get_delivery_attempts_with_http_info(project_id, event_delivery_id, opts)
@@ -106,10 +108,12 @@ module ConvoyApi
     end
 
     # List delivery attempts
-    # This endpoint fetches an app message&#39;s delivery attempts
+    # This endpoint fetches an app message&#39;s delivery attempts Default: latest ten attempts as an array. With paginated&#x3D;true: content and next_cursor. Pass next_cursor as before for older history; empty means last page. Pages are oldest first.
     # @param project_id [String] Project ID
     # @param event_delivery_id [String] event delivery id
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :paginated Return a page of ten attempts and next_cursor
+    # @option opts [String] :before Exclusive attempt cursor from next_cursor; requires paginated&#x3D;true
     # @return [Array<(GetDeliveryAttempts200Response, Integer, Hash)>] GetDeliveryAttempts200Response data, response status code and response headers
     def get_delivery_attempts_with_http_info(project_id, event_delivery_id, opts = {})
       if @api_client.config.debugging
@@ -128,6 +132,8 @@ module ConvoyApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'paginated'] = opts[:'paginated'] if !opts[:'paginated'].nil?
+      query_params[:'before'] = opts[:'before'] if !opts[:'before'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
