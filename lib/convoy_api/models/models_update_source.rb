@@ -39,6 +39,9 @@ module ConvoyApi
     # Source name.
     attr_accessor :name
 
+    # Use this to specify one of our predefined source types.
+    attr_accessor :provider
+
     # PubSub are used to specify message broker sources for outgoing webhooks projects, you only need to specify this when the source type is `pub_sub`.
     attr_accessor :pub_sub
 
@@ -81,6 +84,7 @@ module ConvoyApi
         :'idempotency_keys' => :'idempotency_keys',
         :'is_disabled' => :'is_disabled',
         :'name' => :'name',
+        :'provider' => :'provider',
         :'pub_sub' => :'pub_sub',
         :'type' => :'type',
         :'verifier' => :'verifier'
@@ -108,6 +112,7 @@ module ConvoyApi
         :'idempotency_keys' => :'Array<String>',
         :'is_disabled' => :'Boolean',
         :'name' => :'String',
+        :'provider' => :'DatastoreSourceProvider',
         :'pub_sub' => :'ModelsPubSubConfig',
         :'type' => :'DatastoreSourceType',
         :'verifier' => :'ModelsVerifierConfig'
@@ -172,6 +177,10 @@ module ConvoyApi
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'provider')
+        self.provider = attributes[:'provider']
+      end
+
       if attributes.key?(:'pub_sub')
         self.pub_sub = attributes[:'pub_sub']
       end
@@ -213,6 +222,7 @@ module ConvoyApi
           idempotency_keys == o.idempotency_keys &&
           is_disabled == o.is_disabled &&
           name == o.name &&
+          provider == o.provider &&
           pub_sub == o.pub_sub &&
           type == o.type &&
           verifier == o.verifier
@@ -227,7 +237,7 @@ module ConvoyApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [body_function, custom_response, event_type_location, forward_headers, header_function, idempotency_keys, is_disabled, name, pub_sub, type, verifier].hash
+      [body_function, custom_response, event_type_location, forward_headers, header_function, idempotency_keys, is_disabled, name, provider, pub_sub, type, verifier].hash
     end
 
     # Builds the object from hash
