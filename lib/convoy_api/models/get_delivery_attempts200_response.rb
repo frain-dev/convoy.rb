@@ -45,7 +45,7 @@ module ConvoyApi
       {
         :'message' => :'String',
         :'status' => :'Boolean',
-        :'data' => :'Array<DatastoreDeliveryAttempt>'
+        :'data' => :'GetDeliveryAttempts200ResponseAllOfData'
       }
     end
 
@@ -87,9 +87,7 @@ module ConvoyApi
       end
 
       if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+        self.data = attributes[:'data']
       end
     end
 
