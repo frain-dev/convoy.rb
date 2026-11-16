@@ -29,11 +29,14 @@ module ConvoyApi
     # @option opts [String] :event_id Event ID to filter by
     # @option opts [String] :event_type EventType to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. Matches deliveries of events ingested with it. Not combinable with idempotencyKey.
+    # @option opts [Integer] :min_trials Only return deliveries with at least this many attempts; 2 or more means retried. Requires idempotencyValue, eventId, or endpointId.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
+    # @option opts [Array<String>] :source_id Limits idempotencyValue matching to these source IDs.
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
     # @option opts [String] :subscription_id SubscriptionID to filter by
@@ -53,11 +56,14 @@ module ConvoyApi
     # @option opts [String] :event_id Event ID to filter by
     # @option opts [String] :event_type EventType to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. Matches deliveries of events ingested with it. Not combinable with idempotencyKey.
+    # @option opts [Integer] :min_trials Only return deliveries with at least this many attempts; 2 or more means retried. Requires idempotencyValue, eventId, or endpointId.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
+    # @option opts [Array<String>] :source_id Limits idempotencyValue matching to these source IDs.
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
     # @option opts [String] :subscription_id SubscriptionID to filter by
@@ -83,13 +89,16 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'eventId'] = opts[:'event_id'] if !opts[:'event_id'].nil?
-      query_params[:'event_type'] = opts[:'event_type'] if !opts[:'event_type'].nil?
+      query_params[:'eventType'] = opts[:'event_type'] if !opts[:'event_type'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
+      query_params[:'minTrials'] = opts[:'min_trials'] if !opts[:'min_trials'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
       query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'sourceId'] = @api_client.build_collection_param(opts[:'source_id'], :multi) if !opts[:'source_id'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'status'] = @api_client.build_collection_param(opts[:'status'], :multi) if !opts[:'status'].nil?
       query_params[:'subscriptionId'] = opts[:'subscription_id'] if !opts[:'subscription_id'].nil?
@@ -212,11 +221,14 @@ module ConvoyApi
     # @option opts [String] :event_id Event ID to filter by
     # @option opts [String] :event_type EventType to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. Matches deliveries of events ingested with it. Not combinable with idempotencyKey.
+    # @option opts [Integer] :min_trials Only return deliveries with at least this many attempts; 2 or more means retried. Requires idempotencyValue, eventId, or endpointId.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
+    # @option opts [Array<String>] :source_id Limits idempotencyValue matching to these source IDs.
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
     # @option opts [String] :subscription_id SubscriptionID to filter by
@@ -236,11 +248,14 @@ module ConvoyApi
     # @option opts [String] :event_id Event ID to filter by
     # @option opts [String] :event_type EventType to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. Matches deliveries of events ingested with it. Not combinable with idempotencyKey.
+    # @option opts [Integer] :min_trials Only return deliveries with at least this many attempts; 2 or more means retried. Requires idempotencyValue, eventId, or endpointId.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches delivery id, event id, event type prefix, and endpoint name.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
+    # @option opts [Array<String>] :source_id Limits idempotencyValue matching to these source IDs.
     # @option opts [String] :start_date The start date
     # @option opts [Array<String>] :status A list of event delivery statuses to filter by
     # @option opts [String] :subscription_id SubscriptionID to filter by
@@ -266,13 +281,16 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'eventId'] = opts[:'event_id'] if !opts[:'event_id'].nil?
-      query_params[:'event_type'] = opts[:'event_type'] if !opts[:'event_type'].nil?
+      query_params[:'eventType'] = opts[:'event_type'] if !opts[:'event_type'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
+      query_params[:'minTrials'] = opts[:'min_trials'] if !opts[:'min_trials'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
       query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
+      query_params[:'sourceId'] = @api_client.build_collection_param(opts[:'source_id'], :multi) if !opts[:'source_id'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'status'] = @api_client.build_collection_param(opts[:'status'], :multi) if !opts[:'status'].nil?
       query_params[:'subscriptionId'] = opts[:'subscription_id'] if !opts[:'subscription_id'].nil?

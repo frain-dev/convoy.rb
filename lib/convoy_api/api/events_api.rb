@@ -28,10 +28,12 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
+    # @option opts [String] :query_mode Set to text to search metadata literally, without interpreting JSON in query.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -50,10 +52,12 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
+    # @option opts [String] :query_mode Set to text to search metadata literally, without interpreting JSON in query.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -80,10 +84,12 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
       query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
+      query_params[:'queryMode'] = opts[:'query_mode'] if !opts[:'query_mode'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'sourceId'] = @api_client.build_collection_param(opts[:'source_id'], :multi) if !opts[:'source_id'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
@@ -131,10 +137,12 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
+    # @option opts [String] :query_mode Set to text to search metadata literally, without interpreting JSON in query.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -153,10 +161,12 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
+    # @option opts [String] :query_mode Set to text to search metadata literally, without interpreting JSON in query.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -183,10 +193,12 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
       query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
+      query_params[:'queryMode'] = opts[:'query_mode'] if !opts[:'query_mode'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'sourceId'] = @api_client.build_collection_param(opts[:'source_id'], :multi) if !opts[:'source_id'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
@@ -599,10 +611,12 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
+    # @option opts [String] :query_mode Set to text to search metadata literally, without interpreting JSON in query.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -621,10 +635,12 @@ module ConvoyApi
     # @option opts [String] :end_date The end date
     # @option opts [Array<String>] :endpoint_id A list of endpoint ids to filter by
     # @option opts [String] :idempotency_key IdempotencyKey to filter by
+    # @option opts [String] :idempotency_value Raw value of a source&#39;s single idempotency key location, e.g. a provider delivery ID. List only; pass sourceId if several sources qualify. Not combinable with idempotencyKey.
     # @option opts [String] :next_page_cursor A pagination cursor to fetch the next page of a list
     # @option opts [Integer] :per_page The number of items to return per page
     # @option opts [String] :prev_page_cursor A pagination cursor to fetch the previous page of a list
     # @option opts [String] :query Matches event id prefix, idempotency key, event type, and source name. A JSON object uses payload containment, same as body. Text plus JSON ANDs both.
+    # @option opts [String] :query_mode Set to text to search metadata literally, without interpreting JSON in query.
     # @option opts [String] :sort Sort order, values are &#x60;ASC&#x60; or &#x60;DESC&#x60;, defaults to &#x60;DESC&#x60;
     # @option opts [Array<String>] :source_id A list of Source IDs to filter the events by.
     # @option opts [String] :start_date The start date
@@ -651,10 +667,12 @@ module ConvoyApi
       query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'endpointId'] = @api_client.build_collection_param(opts[:'endpoint_id'], :multi) if !opts[:'endpoint_id'].nil?
       query_params[:'idempotencyKey'] = opts[:'idempotency_key'] if !opts[:'idempotency_key'].nil?
+      query_params[:'idempotencyValue'] = opts[:'idempotency_value'] if !opts[:'idempotency_value'].nil?
       query_params[:'next_page_cursor'] = opts[:'next_page_cursor'] if !opts[:'next_page_cursor'].nil?
       query_params[:'perPage'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'prev_page_cursor'] = opts[:'prev_page_cursor'] if !opts[:'prev_page_cursor'].nil?
       query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
+      query_params[:'queryMode'] = opts[:'query_mode'] if !opts[:'query_mode'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'sourceId'] = @api_client.build_collection_param(opts[:'source_id'], :multi) if !opts[:'source_id'].nil?
       query_params[:'startDate'] = opts[:'start_date'] if !opts[:'start_date'].nil?
